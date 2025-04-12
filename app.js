@@ -68,7 +68,7 @@ const sessionOptions = {
 }
 
 app.get("/", (req, res) => {
-    res.send("Welcome to RJTV Universe!");
+    res.redirect("/home_page");
 });
 
 app.use(session(sessionOptions));
