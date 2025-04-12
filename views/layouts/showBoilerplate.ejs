@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RJTV: Watch & Explore in Style</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=Protest+Guerrilla&display=swap" rel="stylesheet">
+
+    <!-- Swiperjs.com CSS link-->
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+    <!-- Custom Stylesheet -->
+    <link rel="stylesheet" href="/css/homePage/style.css">
+    <link rel="stylesheet" href="/css/showPage/showSlider.css">
+    <link rel="stylesheet" href="/css/home_stars.css">
+    <link rel="stylesheet" href="/css/ghosts.css">
+    <link rel="stylesheet" href="/css/homeAliens.css">
+    <link rel="stylesheet" href="/css/showPage/show.css">
+    <link rel="stylesheet" href= "/css/includes/navBarStyle.css">
+    <link rel="stylesheet" href= "/css/includes/footer.css">
+    <link rel="stylesheet" href="/css/homePage/trailerStyle.css">
+    <link rel="stylesheet" href="/css/rating.css">
+    <link rel="stylesheet" href="/css/popUp.css">
+    <link rel="stylesheet" href="/css/user/user.css">
+    <link rel="stylesheet" href="/css/homePage/slider.css">
+    <!-- Favicon -->
+    <link rel="icon" href="https://cdn.jsdelivr.net/gh/mishraRj/rjtv-trailers/General%20Data/logo.png">
+</head>
+
+<style>
+    body, .main-content {
+    transition: 2s ease-in;
+    display: flex;
+    flex-direction: column;
+    background-color: #121212;
+    background-image: url('<%= themeUrl %>');; 
+    overflow-x: hidden;
+    transition: background-image 6s ease-in; 
+    background-size: initial;
+    margin: 0;
+}
+
+body.horror-bg.delayed-bg, .main-content.horror-bg.delayed-bg {
+    background-image: url('https://cdn.jsdelivr.net/gh/mishraRj/rjtv-trailers/Themes/a%20(1).webp');
+    transition: background-image 6s ease-in; /* Smooth Transition */
+    background-size: initial;
+}
+</style>
+
+<body class="<%= isHorror ? 'horror-bg' : '' %>">
+        <%- include("../includes/flash.ejs") %>
+        <%- include("../includes/signUp.ejs") %>
+        <%- include("../includes/login.ejs") %>
+        <%- include("../includes/navBar.ejs") %>
+        <%- body %>
+
+        <%- include("../includes/footer.ejs") %>
+<% if (showSignUpPopup) { %>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            document.querySelector(".login-wrapper").style.display = "none";
+            document.querySelector(".signup-wrapper").style.display = "flex";
+        });
+    </script>
+<% } else if (!currUser && showLoginPopup) { %>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            document.querySelector(".signup-wrapper").style.display = "none";
+            document.querySelector(".login-wrapper").style.display = "flex";
+        });
+    </script>
+<% } %>
+
+<script>
+    // Fix page caching issues on show.ejs
+    window.onpageshow = function (event) {
+        if (event.persisted) {
+            // Full reload to clear previous form state
+            window.location.reload();
+        }
+    };
+
+    // Also, hide login popup when user navigates back
+    window.addEventListener("pageshow", function (event) {
+        if (performance.navigation.type === 2) { 
+            // Back navigation detected
+            document.querySelector(".error-popUp").style.display = "none";
+            document.querySelector(".login-wrapper").style.display = "none";
+        }
+    });
+</script>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="/js/boilerplateJS/trailerPlayer.js"></script>
+    <script src="/js/showBoilerPlateJS/showSlider.js"></script>
+    <script src="/js/btstrapValidation.js"></script>
+    <script src="/js/boilerplateJS/home_stars.js"></script>
+    <script src="/js/boilerplateJS/homeAliens.js"></script>
+    <script src="/js/boilerplateJS/homePage.js"></script>
+    <script src="/js/showBoilerPlateJS/show.js"></script>
+    <script src="/js/closePopup.js"></script>
+    <script src="/js/boilerplateJS/slider.js"></script>
+</body>

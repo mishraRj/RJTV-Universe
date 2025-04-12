@@ -1,0 +1,51 @@
+<% layout("/layouts/spaceshipBoiler") %>
+
+<div class="main-content">
+    <div class="game-wrapper">
+    <h1>👽Lights of Vega</h1>
+
+   <div class="score-top-right">
+        <h3 id="high-score">High score: <%= currUser ? currUser.highScore : 0 %></h3>
+        <h6 id="score">Score = 0</h6>
+    </div>
+
+    <div class="tutorial-top-right">
+        <p>If you don't know how to play:</p>
+        <a href="https://www.youtube.com/watch?v=EWJ5uYwQJGU" target="_blank">
+            <button class="tutorial">Watch Tutorial</button>
+        </a>
+    </div>
+
+
+    <div id="game-status"></div>
+    <div id="game-over"></div>
+
+    <button id="start-game" class="start-btn">Start Game</button>
+
+    <div class="btn-container">
+        <div class="line-one">
+        <div class="btn" id="red">
+            <img src="https://cdn.jsdelivr.net/gh/mishraRj/rjtv-trailers/spaceships/red.png" alt="Red Saucer" />
+        </div>
+        <div class="btn" id="pink">
+            <img src="https://cdn.jsdelivr.net/gh/mishraRj/rjtv-trailers/spaceships/pink.png" alt="Green Saucer" />
+        </div>
+        </div>
+        <div class="line-two">
+        <div class="btn" id="yellow">
+            <img src="https://cdn.jsdelivr.net/gh/mishraRj/rjtv-trailers/spaceships/yellow.png" alt="Yellow Saucer" />
+        </div>
+        <div class="btn" id="green">
+            <img src="https://cdn.jsdelivr.net/gh/mishraRj/rjtv-trailers/spaceships/green.png" alt="Purple Saucer" />
+        </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<script>
+    window.RJTV = {
+        currentUserId: "<%= currUser ? currUser._id : null %>",
+        initialHighScore: <%= currUser ? currUser.highScore : 0 %>,
+    };
+</script>

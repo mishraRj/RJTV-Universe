@@ -1,0 +1,166 @@
+<% layout("/layouts/boilerplate") %>
+
+<div class="main-content" style="background-image: url('<%= themeUrl %>');">
+    <div class="banner2">
+        <div class="planet2">
+            <img src="<%= channel.planet %>" alt="planet">
+        </div>
+        <div class="slider2" style="--quantity: 10">
+            <% for(let i = 0; i < channel.card.length; i++) { %>
+                <div class="item2" style="--position: <%= i+1 %>">
+                    <img src="<%= channel.card[i] %>" alt="<%= i %>">
+                </div>
+            <% } %> <!-- Closing brace for the loop -->
+        </div>
+        <div class="model2"></div>
+    </div>
+    <br>
+    <h1 id="channel-name">...<%= channel.title %>...</h1>
+    <hr class="content-line">
+
+<% let genres = ["Action","Mythological", "Comedy", "Romance", "Slice of Life", "Horror", "Patriotic"]; %>
+
+    <% genres.forEach(genre => { %>
+        <% if (content.some(movie => movie.genre.includes(genre) && (movie.mcuPhase == undefined || movie.mcuPhase == null))) { %>
+            <br>
+            <h2 class="content-headings"><%= genre %>...</h2>
+            <br>
+            <div class="container swiper" id="container">
+                <div class="slider-wrapper"  id="slider-wrapper">
+                    <div class="card-list swiper-wrapper" id="card-list">
+                        <% for (let movie of content.filter(movie => movie.genre.includes(genre) && (movie.mcuPhase == undefined || movie.mcuPhase == null))) { %>
+                            <div class="card-item swiper-slide" id="card-item">
+                                <a href="/home_page/<%= movie._id %>-<%= movie.title %>">
+                                    <img src="<%= movie.image.url %>" alt="img"  id="user-image">
+                                </a>
+                            </div>
+                        <% } %>
+                    </div>
+                    <div class="swiper-slide-button swiper-button-prev"></div>
+                    <div class="swiper-slide-button swiper-button-next"></div>
+                </div>
+            </div>
+        <% } %>
+    <% }) %>
+
+    <% if (content.some(movie => (movie.channel === "AnimePlanet"  || movie.channel === "CartoonsPlanet") && movie.type === "movie")) { %>
+        <% if (content.some(movie => movie.channel === "AnimePlanet")) {%>
+        <h2 class="content-headings">Anime Movies...</h2>
+        <% } else { %>
+            <h2 class="content-headings">Animated Movies...</h2>
+            <% } %>
+        <br>
+        <div class="container swiper" id="container">
+                <div class="slider-wrapper" id="slider-wrapper">
+                    <div class="card-list swiper-wrapper" id="card-list">
+                        <% for (let movie of content.filter(movie => movie.type === "movie")) { %>
+                            <div class="card-item swiper-slide" id="card-item">
+                                <a href="/home_page/<%= movie._id %>-<%= movie.title %>">
+                                    <img src="<%= movie.image.url %>" alt="img" class="user-image" id="user-image" id="user-image">
+                                </a>
+                            </div>
+                        <% } %>
+                    </div>
+                <!-- If we need navigation buttons -->
+                <div class="swiper-slide-button swiper-button-prev"></div>
+                <div class="swiper-slide-button swiper-button-next"></div>
+                </div>
+            </div>
+    <% } %>
+
+    <% for(let i=1; i<= 5; i++) { %>
+        <% if (content.some(movie => movie.mcuPhase == `${i}`)) { %>
+            <h2 class="content-headings">MCU Phase <%= i %>...</h2>
+        <br>
+        <div class="container swiper" id="container">
+                    <div class="slider-wrapper" id="slider-wrapper">
+                        <div class="card-list swiper-wrapper" id="card-list">
+                            <% for (let movie of content.filter(movie => movie.mcuPhase == `${i}`)) { %>
+                                <div class="card-item swiper-slide" id="card-item">
+                                    <a href="/home_page/<%= movie._id %>-<%= movie.title %>">
+                                        <img src="<%= movie.image.url %>" alt="img" class="user-image" id="user-image" id="user-image">
+                                    </a>
+                                </div>
+                            <% } %>
+                        </div>
+
+                        <!-- If we need pagination -->
+                    <div class="swiper-pagination"></div>
+                    <!-- If we need navigation buttons -->
+                    <div class="swiper-slide-button swiper-button-prev"></div>
+                    <div class="swiper-slide-button swiper-button-next"></div>
+                    </div>
+                </div>
+        <% } %>
+    <% } %>
+
+    <% let categories = 
+    ["DC", "Monster Verse", "Harry Potter", "Hellboy", "John Wick", 
+    "POC", "Animal Fantasy", "LOTR", "Star Wars", "Transformers", "Non-Dharmic"]; %>
+
+    <% categories.forEach(categories => { %>
+    <% if (content.some(movie => movie.category === categories)) { %>
+        <br>
+        <h2 class="content-headings"><%= categories %> Collection...</h2>
+        <br>
+        <div class="container swiper" id="container">
+            <div class="slider-wrapper" id="slider-wrapper">
+                <div class="card-list swiper-wrapper" id="card-list">
+                    <% for (let movie of content.filter(movie => movie.category === categories)) { %>
+                        <div class="card-item swiper-slide" id="card-item">
+                            <a href="/home_page/<%= movie._id %>-<%= movie.title %>">
+                                <img src="<%= movie.image.url %>" alt="img" id="user-image">
+                            </a>
+                        </div>
+                    <% } %>
+                </div>
+                <div class="swiper-slide-button swiper-button-prev"></div>
+                <div class="swiper-slide-button swiper-button-next"></div>
+            </div>
+        </div>
+    <% } %>
+<% }) %>
+
+
+    <% if (content.some(movie => movie.type === "Series")) { %>
+            <h2 class="content-headings">Web Series...</h2>
+        <br>
+        <div class="container swiper" id="container">
+                    <div class="slider-wrapper" id="slider-wrapper">
+                        <div class="card-list swiper-wrapper" id="card-list">
+                            <% for (let movie of content.filter(movie => movie.type === "Series")) { %>
+                                <div class="card-item swiper-slide" id="card-item">
+                                    <a href="/home_page/<%= movie._id %>-<%= movie.title %>">
+                                        <img src="<%= movie.image.url %>" alt="img" class="user-image" id="user-image" id="user-image">
+                                    </a>
+                                </div>
+                            <% } %>
+                        </div>
+                    <!-- If we need navigation buttons -->
+                    <div class="swiper-slide-button swiper-button-prev"></div>
+                    <div class="swiper-slide-button swiper-button-next"></div>
+                    </div>
+                </div>
+        <% } %>
+
+    <% if (content.some(movie => movie.category === "Sony")) { %>
+            <h2 class="content-headings">Sony's Spider-Man Universe...</h2>
+        <br>
+        <div class="container swiper" id="container">
+                    <div class="slider-wrapper" id="slider-wrapper">
+                        <div class="card-list swiper-wrapper" id="card-list">
+                            <% for (let movie of content.filter(movie => movie.category === "Sony")) { %>
+                                <div class="card-item swiper-slide" id="card-item">
+                                    <a href="/home_page/<%= movie._id %>-<%= movie.title %>">
+                                        <img src="<%= movie.image.url %>" alt="img" class="user-image" id="user-image" id="user-image">
+                                    </a>
+                                </div>
+                            <% } %>
+                        </div>
+                    <!-- If we need navigation buttons -->
+                    <div class="swiper-slide-button swiper-button-prev"></div>
+                    <div class="swiper-slide-button swiper-button-next"></div>
+                    </div>
+                </div>
+        <% } %>
+</div>

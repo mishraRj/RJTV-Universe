@@ -1,0 +1,209 @@
+.container {
+    position: relative;
+    left: 30px;
+    margin-top: 100px;
+    margin-bottom: 0;
+    z-index: 100 !important;
+}
+
+.slider-wrapper{
+    overflow: hidden;
+    max-width: 1200px;
+    margin: 0 70px 55px;
+    z-index: 100 !important;
+}
+
+.swiper-wrapper{
+    height: 400px;
+    width: 100%;
+    z-index: 100 !important;
+}
+
+.card-list .card-item {
+    width: 450px;
+    height: 300px;
+    margin-top: 50px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    border-top-left-radius: 35px;
+    border-bottom-right-radius: 35px;
+    border-bottom-left-radius: 35px;
+    background: rgba(0, 0, 0, 0.5); /* Dark glass effect */
+    border: 2px solid rgba(255, 255, 255, 0.2); /* Softer glowing border */
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.4), 
+                0 0 20px rgba(0, 255, 255, 0.2); /* Reduced intensity for balanced glow */
+    transition: box-shadow 0.4s ease-in-out;
+    padding: 10px; /* Added padding for breathing space */
+    box-sizing: border-box; /* Prevents divs from exceeding card boundaries */
+    z-index: 100 !important;
+}
+
+.card-item:hover{
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.6), 
+                0 0 40px rgba(0, 255, 255, 0.3); /* Slightly enhanced glow on hover */
+}
+
+.card-item .profile .pic img {
+    width: 100%;
+    height: 100%;
+    border-radius: 15px; /* Rounded corners for improved styling */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover effect */
+}
+
+.card-item .profile .pic img:hover {
+    transform: scale(1.05); /* Slight zoom on hover */
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.5); /* Glowing effect */
+}
+
+.card-btn {
+    height: 20%;
+    border-bottom-right-radius: 25px;
+    border-bottom-left-radius: 25px;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 5px;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-list .card-item .msg-btn {
+    background: linear-gradient(135deg, #4658ff, #849fff);
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    padding: 6px 20px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease; /* Enhanced effect */
+    box-shadow: 0 0 15px #4658ff;
+}
+
+
+.card-list .card-item .msg-btn:hover {
+    background: #fff;
+    color: #4658ff;
+    transform: scale(1.1);
+    box-shadow: 0 0 25px #849fff; /* Glowing border on hover */
+}
+
+.card-item .profile {
+    width: 100%;
+    height: 40%;
+    border-top-left-radius: 25px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    gap: 0; /* Added gap for spacing */
+}
+
+.profile .pic {
+    width: 30%;
+    height: 100%;
+}
+
+.profile .username {
+    width: 65%; /* Reduced width to create breathing space */
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    
+    flex-direction: column;
+    padding: 4px; /* Added padding inside */
+    box-sizing: border-box;
+}
+
+.username .name {
+    width: 100%;
+    height: 60%;
+    margin-bottom: 0.6px; /* Maintains consistent spacing */
+    padding: 1px 3px;
+    text-transform: uppercase;
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 1rem;
+    text-align: center;
+    background: linear-gradient(45deg, cyan, blue);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 15px cyan;
+    font-family: 'Orbitron', sans-serif;
+}
+
+.username .name h3{
+    font-size: 1.1rem;
+    font-weight: bolder;
+    text-align: center;
+}
+
+.username .ratings {
+    width: 100%;
+    height: 20%;
+    padding: 2px 5px;
+    color: #d4af37; /* Gold for star ratings */
+}
+
+
+.card-item .text-content {
+    width: 100%;
+    height: 40%;
+    padding-top: 10px; /* Space above text content */
+    overflow: auto;
+    font-family:'Times New Roman', Times, serif;
+    color: #fff;
+    text-shadow: 1px 1px 8px rgba(255, 255, 255, 0.6);
+    display: flex;
+    justify-content: center;
+}
+
+.user-image {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover; /* Ensures image scales neatly */
+}
+
+/* Webkit (Chrome/Safari) Scrollbar Styling */
+.card-list .card-item .text-content::-webkit-scrollbar {
+    width: 6px;
+}
+
+.card-list .card-item .text-content::-webkit-scrollbar-thumb {
+    background-color: #fff;
+    border-radius: 10px;
+}
+
+
+.card-list .card-item .msg-btn:hover {
+    background: #4658ff;
+    color: #fff;
+}
+
+.slider-wrapper .swiper-pagination-bullet{
+    background: #fff;
+    width: 15px;
+    height: 15px;
+}
+
+.slider-wrapper .swiper-slide-button{
+    color: #fff;
+    margin-top: -50px;
+    transition: 0.2s ease;
+}
+
+.slider-wrapper .swiper-slide-button:hover{
+    color: #4658ff;
+}
+
+@media (max-width: 768px){
+    .slider-wrapper{
+        margin: 0 10px 40px;
+    }
+
+    .slider-wrapper .swiper-slide-button{
+        display: none;
+    }
+}
+
+

@@ -1,0 +1,489 @@
+body {
+    background-color: #0b0f1a;
+    font-family: 'Orbitron', sans-serif;
+    color: white;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+.game-wrapper {
+    text-align: center;
+    padding-top: 2rem;
+    position: relative;
+}
+
+h1 {
+    font-size: 2.8rem;
+    color: #ffffff;
+    margin-bottom: 1rem;
+    text-shadow: 0 0 8px #00ffff;
+}
+
+#high-score {
+    font-size: 1rem;
+    color: lime;
+    margin: 0;
+}
+
+/* Position high score at top right */
+.score-top-right {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  text-align: right;
+}
+
+.score-top-right h3 {
+  color: #00ff91;
+  font-size: 1.2rem;
+  margin: 0;
+}
+
+/* Position tutorial section right below high score */
+.tutorial-top-right {
+  position: absolute;
+  top: 55px;
+  right: 20px;
+  text-align: right;
+}
+
+.tutorial-top-right p {
+  color: #d6fffb;
+  font-size: 0.95rem;
+  margin-bottom: 5px;
+}
+
+.tutorial-top-right .tutorial {
+  padding: 5px 12px;
+  border-radius: 8px;
+  border: 2px solid #00d9ff;
+  background: transparent;
+  color: #00d9ff;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.tutorial-top-right .tutorial:hover {
+  background-color: #00d9ff;
+  color: #000;
+}
+
+
+.instructions-bottom-left {
+    position: absolute;
+    top: 55px;
+    left: 20px;
+    text-align: left;
+    font-size: 0.9rem;
+    color: #aaf2d3;
+}
+
+.tutorial {
+    background-color: transparent;
+    color: white;
+    border: 1.5px solid #00bfff;
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    margin-top: 5px;
+    transition: 0.4s;
+    cursor: pointer;
+}
+
+.tutorial:hover {
+    background-color: #00bfff;
+    color: black;
+    transform: scale(1.05);
+}
+
+#game-status h3{
+    font-size: 1.5rem;
+    color: #ff4f4f;
+    margin-top: 1.2rem;
+    min-height: 2rem;
+    
+}
+
+#start-game {
+    margin: 1.5rem auto;
+    padding: 12px 32px;
+    font-size: 1.2rem;
+    font-family: 'Orbitron', sans-serif;
+    background: linear-gradient(135deg, #ff1a1a, #000000);
+    color: #ffcccc;
+    border: 2px solid #ff1a1a;
+    border-radius: 12px;
+    cursor: pointer;
+    box-shadow: 0 0 12px #ff1a1a66, 0 0 24px #99000088;
+    transition: all 0.3s ease-in-out;
+    letter-spacing: 1px;
+    text-shadow: 0 0 5px #ff6666aa;
+    z-index: 1000 !important;
+}
+
+#start-game:hover {
+    transform: scale(1.1);
+    background: linear-gradient(135deg, #ff0000, #330000);
+    box-shadow: 0 0 20px #ff3333cc, 0 0 40px #ff1a1a;
+    color: #fff0f0;
+}
+
+
+.btn-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 1rem;
+    margin-bottom: 1.5rem;
+    gap: 1rem;
+}
+
+.line-one,
+.line-two {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.btn {
+    display: none;
+    height: 190px;
+    width: 190px;
+    border-radius: 20%;
+    overflow: hidden;
+    transition: 0.4s ease-in-out;
+    cursor: pointer;
+    outline: none;
+    border: none;
+}
+
+@keyframes spaceShip2 {
+    0% {
+        transform: translateY(-4px);
+    }
+    100% {
+        transform: translateY(4px);
+    }
+}
+
+ /* .btn img{
+    height: 160px;
+    width: 160px;
+    object-fit: cover;
+ } */
+.btn:focus {
+    outline: none;
+    border: none;
+}
+
+.btn img {
+    height: 100%;
+    width: 100%;
+    border-radius: 20%;
+    pointer-events: none;
+    user-select: none;
+    transform: translateY(0);
+}
+
+#yellow img {
+    height: 155px;
+    width: 155px;
+}
+
+#score {
+  color: rgb(247, 0, 255);
+}
+#red img {
+    height: 190px;
+    width: 190px;
+}
+
+.btn.flash img {
+    filter: drop-shadow(0 0 10px white);
+    transform: scale(1.08);
+}
+
+/* --- Glow for game sequence (flash) --- */
+#red.flash img {
+  filter: drop-shadow(0 0 10px red);
+  transform: scale(1.08);
+}
+
+#pink.flash img {
+  filter: drop-shadow(0 0 10px deeppink);
+  transform: scale(1.08);
+}
+
+#yellow.flash img {
+  filter: drop-shadow(0 0 10px yellow);
+  transform: scale(1.08);
+}
+
+#green.flash img {
+  filter: drop-shadow(0 0 10px lime);
+  transform: scale(1.08);
+}
+
+/* --- Glow for user click (userFlash) --- */
+#red.userFlash img {
+  filter: drop-shadow(0 0 10px red);
+  transform: scale(1.08);
+}
+
+#pink.userFlash img {
+  filter: drop-shadow(0 0 10px deeppink);
+  transform: scale(1.08);
+}
+
+#yellow.userFlash img {
+  filter: drop-shadow(0 0 10px yellow);
+  transform: scale(1.08);
+}
+
+#green.userFlash img {
+  filter: drop-shadow(0 0 10px lime);
+  transform: scale(1.08);
+}
+
+#game-status{
+  color: #ff4f4f;
+}
+#game-over {
+    display: none;
+    position: absolute;
+    top: 31%;
+    left: 30%;
+    transform: translate(-50%, -50%);
+    background: rgb(15, 15, 30); /* Dark cosmic theme */
+    height: 400px;
+    width: 500px;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 0 25px rgba(0, 255, 0, 0.2);
+    animation: spaceShip2 3s ease-in-out infinite alternate;
+    z-index: 10;
+}
+
+.game-over-img {
+    width: 250px;
+    border-radius: 30px;
+}
+
+.game-over-msg {
+    margin-top: 10px;
+    font-size: 1.2rem;
+    color: white;
+    font-family: 'Orbitron', sans-serif;
+}
+
+/* Animation for the spaceship appearing */
+@keyframes appearing {
+    0% {
+        transform: translate(-100vw, -200px); /* Start from top left outside the viewport */
+    }
+    100% {
+        transform: translate(0, 0); /* Move to its normal position */
+    }
+}
+
+@media screen and (max-width: 450px) {
+
+  body {
+    font-size: 14px;
+  }
+
+  h1 {
+    font-size: 1.8rem;
+    text-shadow: 0 0 5px #00ffff;
+  }
+
+  .score-top-right,
+  .tutorial-top-right,
+  .instructions-bottom-left {
+    position: static;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+
+  .score-top-right h3,
+  .tutorial-top-right p {
+    font-size: 1rem;
+  }
+
+  .tutorial-top-right .tutorial,
+  .tutorial {
+    font-size: 0.8rem;
+    padding: 4px 10px;
+  }
+
+  #high-score {
+    font-size: 0.9rem;
+    margin-top: 8px;
+  }
+
+  #start-game {
+    font-size: 1rem;
+    padding: 10px 20px;
+    border-radius: 10px;
+    letter-spacing: 0.5px;
+  }
+
+  .btn-container {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    gap: 1rem;
+  }
+
+  .line-one,
+  .line-two {
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .btn {
+    height: 130px;
+    width: 130px;
+    border-radius: 20%;
+  }
+
+  .btn img {
+    height: 100%;
+    width: 100%;
+  }
+
+  #red img {
+    height: 130px;
+    width: 130px;
+  }
+
+  #yellow img{
+    height: 110px;
+    width: 110px;
+  }
+
+  #game-status h3 {
+    font-size: 1.2rem;
+    margin-top: 1rem;
+  }
+
+  #game-over {
+    width: 85vw;
+    height: auto;
+    padding: 15px;
+    top: 55%;
+    left: 8%;
+    transform: translate(-50%, -50%);
+  }
+
+  .game-over-img {
+    width: 80%;
+  }
+
+  .game-over-msg {
+    font-size: 1rem;
+  }
+
+}
+
+@media screen and (min-width: 451px) and (max-width: 768px) {
+
+  body {
+    font-size: 15px;
+  }
+
+  h1 {
+    font-size: 2.2rem;
+    text-shadow: 0 0 6px #00ffff;
+  }
+
+  .score-top-right,
+  .tutorial-top-right,
+  .instructions-bottom-left {
+    position: static;
+    text-align: center;
+    margin-bottom: 12px;
+  }
+
+  .score-top-right h3,
+  .tutorial-top-right p {
+    font-size: 1.05rem;
+  }
+
+  .tutorial-top-right .tutorial,
+  .tutorial {
+    font-size: 0.85rem;
+    padding: 5px 12px;
+  }
+
+  #high-score {
+    font-size: 1rem;
+    margin-top: 10px;
+  }
+
+  #start-game {
+    font-size: 1.1rem;
+    padding: 11px 26px;
+    border-radius: 10px;
+    letter-spacing: 0.8px;
+  }
+
+  .btn-container {
+    margin-top: 1.2rem;
+    margin-bottom: 1.2rem;
+    gap: 1.2rem;
+  }
+
+  .line-one,
+  .line-two {
+    flex-wrap: wrap;
+    gap: 1.2rem;
+  }
+
+  .btn {
+    height: 160px;
+    width: 160px;
+    border-radius: 20%;
+  }
+
+  .btn img {
+    height: 100%;
+    width: 100%;
+  }
+
+  #red img {
+    height: 160px;
+    width: 160px;
+  }
+
+  #yellow img {
+    height: 135px;
+    width: 135px;
+  }
+
+  #game-status h3 {
+    font-size: 1.3rem;
+    margin-top: 1.2rem;
+  }
+
+  #game-over {
+    width: 60vw;
+    height: auto;
+    padding: 20px;
+    top: 48%;
+    left: 18%;
+    transform: translate(-50%, -50%);
+  }
+
+  .game-over-img {
+    width: 75%;
+  }
+
+  .game-over-msg {
+    font-size: 1.1rem;
+  }
+
+}

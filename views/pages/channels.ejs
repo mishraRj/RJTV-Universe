@@ -1,0 +1,20 @@
+<% layout("/layouts/boilerplate") %>
+<div class="main-content" style="background-image: url('<%= themeUrl %>');">
+            <header><h1><i>Welcome to RJTV UNIVERSE</i></h1></header>
+            <hr class="content-line">
+            <h2 id="choose-channels"><i>Choose the channel according to genre !</i></h2>
+        <div class="main">
+            <% for(let channel of channels) { %>
+                <a href="/categories/<%= channel._id %>-<%= channel.channelId %>">
+                    <div id="<%= channel.channelId %>" class="channel">
+                        <img 
+                            src="<%= channel.image.url %>" 
+                            alt="channel image" class="channel-img"
+                        >
+                        <h3 id="name"><%= channel.title %></h3>
+                        <p><%= channel.description %></p>
+                    </div>
+                </a>
+            <% } %>
+        </div>
+</div>

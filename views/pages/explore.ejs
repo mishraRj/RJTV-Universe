@@ -1,0 +1,133 @@
+<% layout("/layouts/boilerplate") %>
+
+<div class="main-content" style="background-image: url('<%= themeUrl %>');">
+    <form action="/explore" method="GET" class="mb-5" id="searchForm">
+        <div class="search-container">
+            <input type="text" name="title" class="search-box" placeholder="Explore the Universe...">
+            <i class="fas fa-search search-icon" onclick="submitSearch()"></i>
+        </div>
+    </form>
+    <br>
+
+    <% if(noResultsFound) { %>
+        <div class="popUp">
+            <div class="error-tv">
+                <!-- Signal Waves -->
+                <div class="err-signal-wave wave1"></div>
+                <div class="err-signal-wave wave2"></div>
+                <div class="err-signal-wave wave3"></div>
+                <img src="https://cdn.jsdelivr.net/gh/mishraRj/rjtv-trailers/General%20Data/sadTV.png" alt="">
+            </div>
+            <div class="popUp-text">
+                <h1>Signal Lost! Movie Not Found</h1>
+            </div>
+        </div>
+    <% } %>
+
+
+    <% if (movieResults && movieResults.length > 0) { %>
+        <h2 class="mt-5">Top Results</h2>
+        <% if(movieResults.length == 1) {%>
+            <% for(let movie of movieResults) { %>
+                    <div class="mb-5 result">
+                        <!-- Left: Movie Poster -->
+                        <div class="result-poster">
+                            <img src="<%= movie.image.url %>" alt="movie-poster" class="movie-poster">
+                        </div>
+                        <!-- Right: Movie Details -->
+                        <div class="result-info">
+                            <div class="movie-details">
+                                <!-- Movie Title -->
+                                <h1 class="movie-title"><%= movie.title %></h1>
+
+                                <!-- Movie Year, Language, Rating -->
+                                <ul>
+                                    <li class="unselectable" id="movie-year"><%= movie.year %></li>
+                                    <li class="unselectable" id="movie-language"><%= movie.language.join(', ') %></li>
+                                    <li class="unselectable">
+                                        <span class="badge text-bg-danger" id="trailer-rating">U/A 13+</span>
+                                    </li>
+                                </ul>
+
+                                <!-- Movie Genre -->
+                                <p class="unselectable" id="movie-genre"><%= movie.genre.join(' | ') %></p>
+
+                                <!-- Movie Description -->
+                                <p class="unselectable movie-description">
+                                    <%= movie.description.length > 250 ? movie.description.substring(0, 250) + "..." : movie.description %>
+                                </p>
+
+                                <div class="explore-buttons">
+                                    <!-- Watch Now Button -->
+                                    <a href="http://localhost:3000/home_page/<%= movie._id %>/player">
+                                        <button class="watch-now-btn">
+                                        ▶ Watch Now
+                                        </button>
+                                    </a>
+                                    <a href="http://localhost:3000/home_page/<%= movie._id %>-<%= movie.title %>">
+                                        <button class="watch-now-btn">
+                                            More Details..
+                                        </button>
+                                    </a>
+                                    <form action="/watchLater/toggle" method="POST" style="display: inline;">
+                                        <input type="hidden" name="movieId" value="<%= movie._id %>">
+                                        <input type="hidden" name="sourceCollection" value="<%= movie.channel %>">
+                                        <input type="hidden" name="movieTitle" value="<%= movie.title %>">
+                                        <button type="submit" class="watch-now-btn">
+                                            <%= currUser && currUser.watchLater.some(item => item.movieId.equals(movie._id) && item.sourceCollection === (movie.channel)) ? '✓' : '+' %>
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <br>
+            <% } %>
+        <% } else {%>
+            <br>
+            <div class="container swiper" id="container">
+                <div class="slider-wrapper" id="slider-wrapper">
+                    <div class="card-list swiper-wrapper" id="card-list">
+                        <% for(let movie of movieResults) { %>
+                            <div class="card-item swiper-slide" id="card-item">
+                                <a href="/home_page/<%= movie._id %>-<%= movie.title %>">
+                                    <img src="<%= movie.image.url %>" alt="img" class="user-image" id="user-image">
+                                </a>
+                                <button 
+                                    class="btn btn-secondary"
+                                    id="Cards_Watch_Btn" 
+                                    type="button"
+                                    onclick="callCSSpaceship1()"
+                                >
+                                    Watch trailer
+                                </button>
+                            </div>
+                        <% } %>
+                    </div>
+
+                    <!-- If we need pagination -->
+                <div class="swiper-pagination"></div>
+                <!-- If we need navigation buttons -->
+                <div class="swiper-slide-button swiper-button-prev"></div>
+                <div class="swiper-slide-button swiper-button-next"></div>
+                </div>
+            </div>
+        <% } %>
+    <% } %>
+    
+    <h2 class=" content-headings">Trending In India...</h2>
+
+                <div class="container posters mt-5">
+                    <div class="row">
+                        <% for(let movie of trendingMovies) { %>
+                            <div class="col-lg-2 col-md-3 col-4 mb-4"> 
+                                <div class="card">
+                                    <a href="/home_page/<%= movie._id %>-<%= movie.title %>">
+                                        <img src="<%= movie.image.url %>" alt="img">
+                                    </a>
+                                </div>
+                            </div>
+                        <% } %>
+                    </div>
+                </div>
+</div>

@@ -1,0 +1,30 @@
+<% layout("/layouts/boilerplate") %>
+
+<div class="contact-wrapper">
+  <div class="site-pic">
+    <img src="https://cdn.jsdelivr.net/gh/mishraRj/rjtv-trailers/General%20Data/rjtv.webp" alt="RJTV Logo">
+  </div>
+
+  <div class="contact-container">
+    <h1 class="contact-title">🛸 Support Center</h1>
+    <p class="contact-desc">
+      Facing any galactic troubles? Reach out to our support team and we’ll beam help your way! 💫
+    </p>
+
+    <form class="contact-form needs-validation" action="/supportMessage" method="POST" novalidate>
+      <div class="mb-3">
+        <input type="text" name="name" class="form-control" placeholder="Your Name" required />
+        <div class="invalid-feedback">Please enter your name.</div>
+      </div>
+      <div class="mb-3">
+        <input type="email" name="email" class="form-control" placeholder="Your Email" required />
+        <div class="invalid-feedback">Please enter a valid email.</div>
+      </div>
+      <div class="mb-3">
+        <textarea name="message" class="form-control" rows="5" placeholder="How can we help you?" required></textarea>
+        <div class="invalid-feedback">Please describe your issue.</div>
+      </div>
+      <button type="submit" class="send-btn">Submit Ticket</button>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,499 @@
+/* Main Pop-Up Container */
+.popUp {
+    position: relative;
+    margin-top: 80px;
+    top: 20px;
+    left: 180px;
+    width: 85%;
+    max-width: 900px;
+    height: 200px;
+    background: radial-gradient(circle, rgba(40, 42, 54, 0.9) 30%, rgba(10, 10, 20, 0.9) 90%);
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 0 30px rgba(70, 88, 255, 0.8);
+    border: 2px solid rgba(70, 88, 255, 0.9);
+    overflow: hidden;
+    backdrop-filter: blur(15px);
+    transition: 0.3s ease-in-out;
+    animation: floatEffect 3s ease-in-out infinite alternate;
+    z-index: 1000;
+}
+
+/* Smooth Floating Animation */
+@keyframes floatEffect {
+    0% { transform: translateY(5px); }
+    100% { transform: translateY(-5px); }
+}
+
+/* Animated Star Background */
+.popUp::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('../space_stars.png'); /* Add a subtle space star texture */
+    opacity: 0.3;
+}
+
+.popUp:hover {
+    box-shadow: 0 0 40px rgba(70, 88, 255, 1);
+}
+
+/* TV Section */
+.popUp .error-tv {
+    position: relative;
+    width: 35%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.6);
+    border-right: 2px solid rgba(70, 88, 255, 0.7);
+    padding: 20px 0 0 0;
+}
+
+/* TV Glowing Effect */
+.popUp .error-tv img {
+    width: 70%;
+    height: auto;
+    object-fit: contain;
+    filter: drop-shadow(0px 0px 25px rgba(70, 88, 255, 0.9));
+    animation: glowEffect 2.5s ease-in-out infinite alternate;
+}
+
+@keyframes glowEffect {
+    0% { filter: drop-shadow(0px 0px 15px rgba(70, 88, 255, 0.7)); }
+    100% { filter: drop-shadow(0px 0px 30px rgba(70, 88, 255, 1)); }
+}
+
+/* Reverse Signal Animation (Moving Inward) */
+.err-signal-wave {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(1.6);
+    animation: reverseWaveAnimation 1.5s ease-in;
+}
+
+.err-signal-wave::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-top: 2px solid rgba(70, 88, 255, 0.7);
+    border-right: 2px solid transparent;
+    border-bottom: 2px solid transparent;
+    border-left: 2px solid transparent;
+    border-radius: 50%;
+}
+
+/* Multiple Signal Waves with Different Timing */
+.err-signal-wave.wave1 { animation-delay: 0s; }
+.err-signal-wave.wave2 { animation-delay: 0.5s; }
+.err-signal-wave.wave3 { animation-delay: 1s; }
+
+/* Reverse Animation - Waves Shrink Inward */
+@keyframes reverseWaveAnimation {
+    0% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1.6);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.6);
+    }
+}
+
+/* Pop-Up Text */
+.popUp .popUp-text {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+    font-size: 1.5rem;
+    text-shadow: 0px 0px 15px rgba(70, 88, 255, 0.9);
+    font-family: 'Orbitron', sans-serif;
+    text-align: center;
+    padding: 15px;
+}
+
+/* Text Styling */
+.popUp .popUp-text h1 {
+    position: relative;
+    display: inline-block;
+    font-family: 'Orbitron', sans-serif;
+    color: #ffffff;
+    text-align: center;
+    text-transform: uppercase;
+    text-shadow: 0px 0px 10px rgba(70, 88, 255, 0.8);
+    animation: flicker 2s infinite alternate, scanLines 3s infinite linear;
+    overflow: hidden;
+}
+
+/* Flickering Opacity Effect */
+@keyframes flicker {
+    0% { opacity: 1; }
+    50% { opacity: 0.7; }
+    100% { opacity: 1; }
+}
+
+/* Horizontal Scan Line Effect */
+@keyframes scanLines {
+    0% { background-position: 0% 0%; }
+    100% { background-position: 0% 100%; }
+}
+
+/* Adding Scan Lines Overlay */
+.popUp .popUp-text h1::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+        transparent 0px, 
+        rgba(255, 255, 255, 0.07) 2px, 
+        transparent 4px
+    );
+    animation: scanLines 3s linear infinite;
+    opacity: 0.4;
+    pointer-events: none;
+}
+
+.success-popUp {
+    position: absolute;
+    left: 190px;
+    width: 85%;
+    max-width: 900px;
+    height: 150px; /* Decreased height for alert-style pop-up */
+    background: radial-gradient(circle, rgba(40, 42, 54, 0.9) 30%, rgba(10, 10, 20, 0.9) 90%);
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 0 30px rgba(70, 255, 70, 0.8); /* Changed to green for success */
+    border: 2px solid rgba(70, 255, 70, 0.9); /* Changed to green for success */
+    overflow: hidden;
+    backdrop-filter: blur(15px);
+    transition: 0.3s ease-in-out;
+    animation: floatEffect 3s ease-in-out infinite alternate;
+    z-index: 1000;
+}
+
+/* Smooth Floating Animation */
+@keyframes floatEffect {
+    0% { transform: translateY(3px); }
+    100% { transform: translateY(-3px); }
+}
+
+.success-popUp:hover {
+    box-shadow: 0 0 40px rgba(70, 255, 70, 1); /* Changed to green */
+}
+
+/* TV Section */
+.success-popUp .success-error-tv {
+    position: relative;
+    width: 35%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.6);
+    border-right: 2px solid rgba(70, 255, 70, 0.7); /* Changed to green */
+    padding: 20px 0 0 0;
+}
+
+/* TV Glowing Effect */
+.success-popUp .success-error-tv img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0px 0px 25px rgba(70, 255, 70, 0.9)); /* Green glow */
+    animation: flash-glowEffect 2.5s ease-in-out infinite alternate;
+}
+
+@keyframes flash-glowEffect {
+    0% { filter: drop-shadow(0px 0px 15px rgba(70, 255, 70, 0.7)); }
+    100% { filter: drop-shadow(0px 0px 30px rgba(70, 255, 70, 1)); }
+}
+
+/* Signal Animation (Expanding Outward) */
+.success-signal-wave {
+    position: absolute;
+    top: 80%;
+    left: 50%;
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    opacity: 1; /* Set opacity to 1 for clear waves */
+    transform: translate(-50%, -50%) scale(0.6); /* Start from smaller scale */
+    animation: outwardWaveAnimation 3s infinite ease-in-out;
+}
+
+.success-signal-wave::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-top: 2px solid rgba(70, 255, 70, 0.7); /* Green waves */
+    border-right: 2px solid transparent;
+    border-bottom: 2px solid transparent;
+    border-left: 2px solid transparent;
+    border-radius: 50%;
+}
+
+/* Multiple Signal Waves with Different Timing */
+.success-signal-wave.wave1 { animation-delay: 0s; }
+.success-signal-wave.wave2 { animation-delay: 0.5s; }
+.success-signal-wave.wave3 { animation-delay: 1s; }
+
+/* Outward Animation - Waves Expand */
+@keyframes outwardWaveAnimation {
+    0% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(0.6); /* Start small */
+    }
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(1.6); /* Expand outward */
+    }
+}
+
+/* Pop-Up Text */
+.success-popUp .success-popUp-text {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+    font-size: 1.5rem;
+    text-shadow: 0px 0px 15px rgba(70, 255, 70, 0.9); /* Green text glow */
+    font-family: 'Orbitron', sans-serif;
+    text-align: center;
+    padding: 15px;
+}
+
+/* Text Styling */
+.success-popUp .success-popUp-text h1 {
+    position: relative;
+    display: inline-block;
+    font-family: 'Orbitron', sans-serif;
+    color: #ffffff;
+    text-align: center;
+    text-transform: uppercase;
+    text-shadow: 0px 0px 10px rgba(70, 255, 70, 0.8); /* Green text shadow */
+    animation: flicker 2s infinite alternate, scanLines 3s infinite linear;
+    overflow: hidden;
+}
+
+/* Flickering Opacity Effect */
+@keyframes flicker {
+    0% { opacity: 1; }
+    50% { opacity: 0.7; }
+    100% { opacity: 1; }
+}
+
+/* Horizontal Scan Line Effect */
+@keyframes scanLines {
+    0% { background-position: 0% 0%; }
+    100% { background-position: 0% 100%; }
+}
+
+/* Adding Scan Lines Overlay */
+.success-popUp .success-popUp-text h1::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+        transparent 0px, 
+        rgba(255, 255, 255, 0.07) 2px, 
+        transparent 4px
+    );
+    animation: scanLines 3s linear infinite;
+    opacity: 0.4;
+    pointer-events: none;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: transparent;
+    border: none;
+    color: #ffffff;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 1100; /* Ensure button is above the popup */
+    transition: color 0.3s ease;
+}
+
+.close-btn:hover {
+    color: #ff6347; /* Change color when hovered */
+}
+.close-btn i {
+    font-size: 30px; /* Make the icon larger if needed */
+}
+
+.error-popUp {
+    position: absolute;
+    left: 190px;
+    width: 85%;
+    max-width: 900px;
+    height: 150px; /* Same height as success pop-up */
+    background: radial-gradient(circle, rgba(50, 0, 0, 0.9) 30%, rgba(10, 0, 0, 0.9) 90%); /* Dark red gradient */
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 0 30px rgba(255, 0, 0, 0.8); /* Red glow for error */
+    border: 2px solid rgba(255, 0, 0, 0.9); /* Red border for error */
+    overflow: hidden;
+    backdrop-filter: blur(15px);
+    animation: floatEffect 3s ease-in-out infinite alternate;
+    transition: 0.3s ease-in-out;
+    z-index: 10000;
+}
+
+/* Hover effect for error pop-up */
+.error-popUp:hover {
+    box-shadow: 0 0 40px rgba(255, 0, 0, 1); /* Red glow on hover */
+}
+
+/* TV Section for Error Popup */
+.error-popUp .error-error-tv {
+    position: relative;
+    width: 35%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.6);
+    border-right: 2px solid rgba(255, 0, 0, 0.7); /* Red border for error */
+    padding: 20px 0 0 0;
+}
+
+/* Glowing effect for error TV */
+.error-popUp .error-error-tv img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+/* Error Popup Text */
+.error-popUp .error-popUp-text {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+    font-size: 1.5rem;
+    text-shadow: 0px 0px 15px rgba(255, 0, 0, 0.9); /* Red text glow */
+    font-family: 'Orbitron', sans-serif;
+    text-align: center;
+    padding: 15px;
+}
+
+.error-popUp .error-popUp-text h1 {
+    position: relative;
+    display: inline-block;
+    font-family: 'Orbitron', sans-serif;
+    color: #ffffff;
+    text-align: center;
+    text-transform: uppercase;
+    text-shadow: 0px 0px 10px rgba(255, 0, 0, 0.8); /* Red text shadow */
+    animation: flicker 2s infinite alternate;
+}
+
+
+/* Adjust pop-up height and width for small screens */
+@media (max-width: 768px) {
+    .success-popUp, .error-popUp {
+        left: 40px;
+        width: 90%;
+        height: 130px;
+    }
+    .success-popUp .success-popUp-text, .error-popUp .error-popUp-text {
+        font-size: 1.2rem;
+        padding: 10px;
+    }
+    .success-popUp .success-error-tv, .error-popUp .error-error-tv {
+        width: 40%;
+        padding: 10px;
+    }
+    .close-btn {
+        font-size: 20px;
+    }
+    .popUp {
+    left: 20px;
+    width: 90%;
+    height: 160px;
+    padding: 10px 0;
+    margin-top: 60px;
+    box-shadow: 0 0 20px rgba(70, 88, 255, 0.6);
+  }
+
+  .popUp .error-tv {
+    width: 32%;
+    padding: 10px 0 0 0;
+  }
+
+  .popUp .error-tv img {
+    width: 60%;
+  }
+
+  .popUp .popUp-text {
+    font-size: 1.2rem;
+    padding: 10px;
+  }
+
+  .popUp .popUp-text h1 {
+    font-size: 1.1rem;
+  }
+
+  .err-signal-wave {
+    width: 90px;
+    height: 90px;
+  }
+
+  .err-signal-wave::before {
+    border-top-width: 1px;
+  }
+}
+
+/* Adjust pop-up for very small screens (mobile) */
+@media (max-width: 480px) {
+    .success-popUp, .error-popUp {
+        left: 10px;
+        width: 100%;
+        height: 120px;
+        animation: none;
+    }
+    .success-popUp .success-popUp-text, .error-popUp .error-popUp-text {
+        font-size: 1.1rem;
+        padding: 8px;
+        animation: none;
+    }
+    .success-popUp .success-error-tv, .error-popUp .error-error-tv {
+        width: 45%;
+        padding: 8px;
+        animation: none;
+    }
+
+    .popUp {
+    animation: none;
+  }
+}

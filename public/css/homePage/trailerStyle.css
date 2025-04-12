@@ -1,0 +1,713 @@
+.trailer {
+    width: 91.4%; /* or specific width like 500px */
+    max-width: 1280px; /* Ensures the video doesn't exceed this size */
+    height: 100%; /* Ensures the height is proportional to the width */
+    /* overflow: hidden; */
+    margin-top: 70px;
+    /* background-color: white; */
+    position: relative;
+    margin-left: 100px;
+    border-top-left-radius: 30%;
+    border-bottom-right-radius: 30%;
+    animation: trailer-glow 2s infinite alternate;
+    display: flex;
+    justify-content: center;
+    z-index: 200;
+}
+
+h1 {
+    color: white;
+}
+
+@keyframes trailer-glow {
+    0% {
+        box-shadow: 0 0 10px #ff00ff, 0 0 20px #9400d3, 0 0 30px #4b0082;
+        background-color: #1a0033;
+        border-color: #ff00ff;
+    }
+    50% {
+        box-shadow: 0 0 20px #ff1493, 0 0 30px #8a2be2, 0 0 40px #00ced1;
+        background-color: #330066;
+        border-color: #ff1493;
+    }
+    100% {
+        box-shadow: 0 0 15px #00ced1, 0 0 25px #ff00ff, 0 0 35px #9400d3;
+        background-color: #1a0033;
+        border-color: #ff00ff;
+    }
+}
+
+.trailer video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block; /* Ensures no extra margins */
+    border-top-left-radius: 30%;
+    border-bottom-right-radius: 30%;
+    z-index: 200;
+}
+
+.fa-volume-high, .fa-volume-xmark {
+    position: absolute;
+    bottom: 30px; /* Adjust as necessary */
+    right: 20px; /* Adjust as necessary */
+    font-size: 24px; /* Adjust size as needed */
+    color: white; /* Color of the icons */
+    z-index: 10;
+}
+
+.trailer-text {
+    height: 70%; /* Height of the trailer text */
+    width: 45%; /* Width of the trailer text */
+    position: absolute;
+    bottom: 0; /* Position at the bottom of the parent */
+    left: 0px; /* Position from the left side */
+    bottom: 3%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Evenly space the children */
+    color: white;
+    opacity: 0.7;
+    text-shadow: 0 0 4px black;
+    transition: opacity 0.8s ease-in-out; /* Smooth transition for opacity */
+    z-index: 300;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.trailer-text:hover{
+    opacity: 1;
+    filter: brightness(1);
+    
+    animation: text-glow 2s infinite alternate;
+}
+
+.trailer-text img {
+    height: 20vh;
+    width: 50vh;
+    display: block;
+}
+
+.trailer-text p {
+    font-size: 1.4rem;
+    line-height: 30px;
+}
+
+.trailer-text ul {
+    list-style: disc; /* Ensures bullet points */
+    padding-left: 20px; /* Adds some padding for the bullets to be visible */
+}
+
+.trailer-text li {
+    display: list-item; /* Makes sure the bullet is shown */
+    float: left; /* This will place the items inline while keeping bullets */
+    margin-right: 20px; /* Space between the list items */
+}
+
+li .badge {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    padding: 5px 15px; /* Adjust padding to make it wider */
+    font-size: 1rem; /* Optional: Adjust font size if needed */
+    word-spacing: 10px;
+    border-radius: 5px; /* Optional: Adjust border radius for rounded corners */
+    text-shadow: 0 0 10px black;
+}
+
+.trailer-descripton {
+    flex: 1; /* This allows the description to take available space */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around; /* Evenly space content within */
+}
+
+.text-btn {
+    display: flex; /* Align buttons in a row */
+    justify-content: flex-start; /* Align buttons to the start */
+    padding: 10px 0; /* Padding on top and bottom */
+}
+
+.text-btn button {
+    border-radius: 10px; /* Rounded corners for buttons */
+    height: 50px; /* Set a fixed height for buttons */
+    margin-right: 10px; /* Space between buttons */
+    font-size: 1rem; /* Consistent font size */
+    transition: background-color 0.3s ease; /* Smooth background color transition */
+}
+
+#Watch_Btn {
+    background-color: #6c757d; /* Grey background */
+    color: white; /* White text color */
+    flex: 1; /* Allow the watch button to take available space */
+    font-size: 1.3rem;
+    border: 2px solid black;
+}
+
+#plus_btn {
+    background-color: #6c757d; /* Grey background */
+    color: white;
+    padding: 0 20px; /* Add horizontal padding for the plus button */
+    font-size: 1.5rem; /* Increase font size for the plus icon */
+    display: flex; /* Center icon */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.loader {
+    position: fixed; 
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%); /* Center loader on screen */
+    width: 40vw; 
+    height: 40vh; 
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.spinner {
+    position: absolute; /* Allow for precise control of its placement */
+    top: 200%; /* Position slightly above the image */
+    left: 110%;
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.spinner img {
+    width: 100px; /* Adjust width as needed */
+    height: 100px;
+}
+
+
+/* Signal Wave Styles */
+.signal-wave {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.6);
+    animation: waveAnimation 2.5s infinite ease-out;
+}
+
+.signal-wave::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-top: 5px solid rgba(255, 255, 255, 0.7); /* Visible top border */
+    border-right: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    border-left: 5px solid transparent;
+    border-radius: 50%;
+}
+
+
+.wave1 {
+    animation-delay: 0s;
+}
+
+.wave2 {
+    animation-delay: 0.5s;
+    width: 160px;
+    height: 160px;
+}
+
+.wave3 {
+    animation-delay: 1s;
+    width: 180px;
+    height: 180px;
+}
+
+@keyframes waveAnimation {
+    0% {
+        transform: translate(-50%, -50%) scale(0.5);
+        opacity: 0.8;
+    }
+    50% {
+        opacity: 0.5;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(1.3);
+        opacity: 0;
+    }
+}
+
+/* Add hover effect for buttons */
+.text-btn button:hover {
+    opacity: 0.9; /* Slightly increase opacity on hover */
+}
+
+/* Content */
+h2 {
+    font-size: 2rem;
+    color: white;
+    position: relative; /* Change to relative */
+    left: 100px; /* Keep this if you want it offset from the left */
+    z-index: 1;
+    width: 90%;
+    top: 2rem;
+}
+
+.posters img.bhoot {
+    width: 20px;
+    height: 20px;
+    opacity: 0;
+    position: absolute;
+    top: 10%;
+    left: 45.5%;
+    display: none;
+    transition: transform 1s ease, opacity 1s ease;
+    z-index: 3000;
+}
+
+h5 {
+    font-size: 1rem;
+    color: wheat;
+    position: absolute; /* Change to relative */
+    right: 40px; /* Keep this if you want it offset from the left */
+    z-index: 1;
+    opacity: 0.7;
+    margin-bottom: 50px;
+    cursor: pointer;
+}
+
+.horror_btn{
+    animation: color 0.2s infinite alternate;
+}
+
+.next-trailer {
+    position: absolute;
+    right: 0;
+    top: 40%;
+    z-index: 1000;
+    font-size: 40px;
+    color: white;
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.next-trailer:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+@keyframes color{
+    0% {
+        color: rgb(255, 0, 0);
+        text-shadow: 0 0 20px whitesmoke, 0 0 30px cyan;
+    }
+    100% {
+        color: greenyellow;
+        text-shadow: 0 0 35px cyan, 0 0 45px whitesmoke;
+    }
+}
+
+h5:hover{
+    opacity: 1;
+    color: chartreuse;
+}
+
+@media (max-width: 1009px) {
+    .trailer{
+        width: 100%; /* or specific width like 500px */
+        height: 80%;
+    }
+    .trailer-text {
+        height: 80%; /* Height of the trailer text */
+        width: 70%; /* Width of the trailer text */
+        /* bottom: 8%; */
+    }
+    .trailer-text img {
+        height: 10vh;
+        width: 25vh;
+        display: block;
+    }
+    
+    .trailer-text p {
+        font-size: 1rem;
+        line-height: 20px;
+    }
+}
+
+@media (max-width: 1224px) {
+    .trailer{
+        width: 90%; /* or specific width like 500px */
+        height: 80%;
+    }
+    .trailer-text {
+        height: 80%; /* Height of the trailer text */
+        width: 60%; /* Width of the trailer text */
+        /* bottom: 8%; */
+    }
+    .trailer-text img {
+        height: 10vh;
+        width: 25vh;
+        display: block;
+    }
+    
+    .trailer-text p {
+        font-size: 1.5rem;
+        line-height: 30px;
+    }
+}
+
+@media (min-width: 655px) and (max-width: 984px) {
+    .trailer-text {
+        width: 65%; /* Slightly wider than smaller screens for better balance */
+    }
+
+    .trailer-text p {
+        font-size: 1rem;  /* Medium-sized text */
+        line-height: 18px; /* Improved spacing for readability */
+    }
+
+    .trailer-text ul li {
+        font-size: 0.7rem; /* Smaller text for list items */
+    }
+
+    .trailer-text img {
+        height: 8vh; /* Adjusted image size */
+        width: 20vh;
+    }
+
+    .text-btn button {
+        height: 35px; 
+        font-size: 0.8rem;
+    }
+
+    #Watch_Btn {
+        font-size: 1rem;
+        padding: 5px 10px;
+    }
+
+    #plus_btn {
+        font-size: 1.2rem;
+    }
+}
+
+@media (min-height: 654px) and (max-width: 762px) {
+        .trailer{
+        width: 100%; /* or specific width like 500px */
+        height: auto;
+        margin-left: 0;
+    }
+
+    .container{
+        left: 0;
+        margin-left: 0;
+    }
+    .trailer-text {
+        height: 80%; /* Height of the trailer text */
+        width: 60%; /* Width of the trailer text */
+    }
+    .trailer-text img {
+        height: 7vh;
+        width: 14vh;
+        display: block;
+    }
+    
+    .trailer-text p {
+        font-size: 0.8rem;
+        line-height: 15px;
+        margin-top: 0;
+    }
+    .trailer-text ul li{
+        font-size: 0.5rem;
+    }
+}
+
+@media (min-height: 375px) and (max-width: 654px) {
+    .trailer{
+        width: 100%; /* or specific width like 500px */
+        height: auto;
+        margin-left: 0;
+
+    }
+
+    .trailer-text {
+        height: 80%; /* Height of the trailer text */
+        width: 70%; /* Width of the trailer text */
+    }
+    .trailer-text img {
+        display: block;
+        
+    }
+
+    .trailer-text p {
+        font-size: 0.5rem;
+        line-height: 10px;
+
+    }
+
+    .form-check label{
+        display: none;
+    }
+
+    .form-check #flexSwitchCheckChecked{
+        display: none;
+    }
+
+    .trailer-text ul li{
+            font-size: 0.5rem;
+        }
+
+    .trailer-text #trailer-rating{
+            display: none;
+        }
+
+    .text-btn button {
+        height: 30px; /* Set a fixed height for buttons */
+        font-size: 0.5rem; /* Consistent font size */
+        max-width: 200px;
+    }
+
+    #Watch_Btn {
+        font-size: 0.8rem;
+        padding: 3px 3px;
+        max-width: 200px;
+    }
+
+    #plus_btn {
+        font-size: 1rem; /* Increase font size for the plus icon */
+    }
+
+    .posters{
+        left: 0;
+    }
+    h2{
+        font-size: 1rem;
+        left: 0;
+    }
+    h5{
+        font-size: 0.7rem !important;
+        right: 0px !important;
+    }
+    .card-item {
+        cursor: pointer;
+        width: 50px; /* Fixed width for cards */
+        height: 80px; /* Fixed height for cards */
+        margin-right: 10px; /* Space between cards */
+    }
+    .card-item img{
+        width: 100%; /* Fixed width for cards */
+        height: 100%; /* Fixed height for cards */
+    }
+
+    .nav-bar {
+        height: 100vh;
+        width: 80px; /* Initial width */
+    }
+    .loader {
+        position: absolute; /* Ensures positioning within the parent div */
+        top: -60px !important;
+        left: 120px !important;
+        width: 60px;
+        height: 60px;
+        background-color: rgba(0, 0, 0, 0); /* Maintain transparency */
+        display: flex; /* Flexbox for content alignment */
+        align-items: center; /* Vertically center */
+        justify-content: center; /* Horizontally center */
+    }
+    .spinner img{
+        width: 60px; /* Size of the spinner */
+        height: 60px; /* Size of the spinner */
+        animation: none;/* Spin animation */
+    }
+
+    .next-trailer {
+        top: 40%;
+        font-size: 30px;
+        padding: 15px;
+        width: 35px;
+        height: 35px;
+    }
+}
+@media (max-width: 754px) {
+    .trailer{
+        width: 100%; /* or specific width like 500px */
+    height: auto;
+    margin-left: 0;
+    }
+    h2 {
+        font-size: 1.5rem;
+        left: 0;
+    }
+}
+
+@media(max-width: 375px) {
+    * {
+        animation: none;
+    }
+        .trailer{
+        width: 100%; /* or specific width like 500px */
+        height: auto;
+        animation: none;
+    }
+
+    .next-trailer {
+    top: 40%;
+    font-size: 20px;
+    padding: 10px;
+    width: 30px;
+    height: 30px;
+}
+
+.container{
+        left: 0;
+        margin-left: 0;
+    }
+
+.trailer-text {
+    height: 80%; /* Height of the trailer text */
+    width: 70%; /* Width of the trailer text */
+    z-index: 300;
+    bottom: 15%;
+}
+.trailer-text img {
+    display: block;
+}
+
+.text-btn button {
+    height: 30px; /* Set a fixed height for buttons */
+    font-size: 0.5rem; /* Consistent font size */
+    padding: 2px 2px;
+    width: 50%;
+}
+
+#Watch_Btn {
+    font-size: 0.6rem;
+    padding: 2px 2px;
+    width: 70%;
+}
+
+#plus_btn {
+    font-size: 0.8rem; /* Increase font size for the plus icon */
+    width: 30%;
+}
+
+.trailer-text ul {
+    display: none;
+}
+
+.posters{
+    left: 0;
+}
+h2{
+    font-size: 1rem;
+    left: 0;
+}
+h5{
+    font-size: 0.7rem !important;
+    right: 0px !important;
+}
+.card-item {
+    width: 40px; /* Fixed width for cards */
+    height: 80px; /* Fixed height for cards */
+    margin-right: 10px; /* Space between cards */
+    padding: 0;
+}
+
+#card5{
+    display: none;
+}
+
+#card6{
+    display: none;
+}
+.card img{
+    width: 100%; /* Fixed width for cards */
+    height: 100%; /* Fixed height for cards */
+}
+
+.nav-bar {
+    height: 100vh;
+    width: 80px; /* Initial width */
+}
+.form-check {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    position: absolute;
+    top: calc(100% - 430px); /* Position 20px above `child2`'s top border */
+    right: 30px;
+    height: 3px;
+    width: 70%;
+}
+.form-check label{
+    display: none;
+}
+
+.form-check #flexSwitchCheckChecked{
+    display: none;
+}
+
+.text{
+    animation: none;
+}
+
+.nav-bar .menu a{
+    animation: none !important;
+}
+
+.subscription h3{
+    animation: none;
+}
+.form-switch{
+    animation: none;
+}
+.loader {
+    position: absolute; /* Ensures positioning within the parent div */
+    top: -80px !important;
+    left: 100px !important;
+    width: 60px;
+    height: 60px;
+    background-color: rgba(0, 0, 0, 0); /* Maintain transparency */
+    display: flex; /* Flexbox for content alignment */
+    align-items: center; /* Vertically center */
+    justify-content: center; /* Horizontally center */
+}
+.spinner img{
+    width: 60px; /* Size of the spinner */
+    height: 60px; /* Size of the spinner */
+    animation: none;/* Spin animation */
+}
+}
+
+.loader {
+    position: absolute; /* Ensures positioning within the parent div */
+    top: 30%;
+    margin-right: 0;
+    transform: translate(-50%, -50%); /* Centers it perfectly */
+    width: 100px;
+    height: 100px;
+    background-color: rgba(0, 0, 0, 0); /* Maintain transparency */
+    display: flex; /* Flexbox for content alignment */
+    align-items: center; /* Vertically center */
+    justify-content: center; /* Horizontally center */
+}
+
+
+.spinner {
+    border: 4px solid #9400d3; /* Light grey with transparency for the outer border */
+    border-top: 4px solid transparent; /* Make the top transparent */
+    border-radius: 50%;
+    width: 25px; /* Size of the spinner */
+    height: 25px; /* Size of the spinner */
+    animation: none /* Spin animation */
+
+}

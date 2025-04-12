@@ -1,0 +1,17 @@
+<% layout("/layouts/spaceshipBoiler") %>
+
+<div class="settings-wrapper">
+    <div class="settings-card">
+        <h1 class="settings-title">Select Theme</h1>
+        <form action="/themes" method="POST" class="theme-selection-form">
+        <% availableThemes.forEach(theme => { %>
+            <label class="theme-option">
+            <input type="radio" name="selectedTheme" value="<%= theme %>" <%= user.selectedTheme === theme ? 'checked' : '' %> />
+            <img src="<%= theme %>" alt="Theme preview" class="theme-preview" />
+            </label>
+        <% }) %>
+        <button type="submit" class="settings-btn">Apply Theme</button>
+        </form>
+    </div>
+</div>
+

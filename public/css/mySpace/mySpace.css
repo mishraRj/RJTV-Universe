@@ -1,0 +1,545 @@
+/* My Space*/
+.not-loggedIn {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    /* max-width: 1000px; */
+    padding: 30px;
+    background: rgba(15, 15, 30, 0.95); /* Dark cosmic theme */
+    border-radius: 15px;
+    box-shadow: 0px 0px 20px rgba(0, 255, 255, 0.4);
+    border: 2px solid rgba(34, 0, 255, 0.6);
+    animation: fadeIn 0.3s ease-in-out;
+    z-index: 100;
+}
+
+.empty-bucket {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative; /* Changed from absolute for better layout handling */
+    text-align: center;
+    width: 100%;
+    left: 0px;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 30px;
+    background: rgba(15, 15, 30, 0.95);
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.4);
+    border: 2px solid rgba(34, 0, 255, 0.6);
+    z-index: 100;
+}
+
+.bucket {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.bucket img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 50%;
+}
+
+#highScore{
+  color: #00ff9d;
+}
+/* Heading style for cosmic login prompt */
+.not-loggedIn .login-heading {
+    color: #00eaff;
+    font-family: "Orbitron", sans-serif;
+    font-weight: bold;
+    text-align: center !important;
+    left: 0;
+    font-size: 1.8rem;
+    text-shadow: 0px 0px 8px rgba(0, 238, 255, 0.8);
+    margin-bottom: 30px;
+    z-index: 100;
+}
+
+/* Cosmic journey description */
+.not-loggedIn .login-description {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.8);
+    font-family: "Poppins", sans-serif;
+    text-shadow: 0px 0px 5px rgba(255, 255, 255, 0.4);
+    max-width: 500px;
+    line-height: 1.5;
+    z-index: 100;
+}
+
+/* Fade-in effect */
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+/* Centered TV Image */
+.not-loggedIn img {
+    width: 80%;
+    max-width: 250px;
+    border-radius: 12px;
+    box-shadow: 0px 0px 20px rgba(0, 255, 255, 0.6);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    z-index: 100;
+}
+
+.not-loggedIn img:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 0px 30px rgba(0, 255, 255, 0.8);
+}
+
+/* Button container */
+.logInBtns {
+    margin-top: 20px;
+}
+
+/* Login and Signup Buttons */
+.logInBtns button {
+    padding: 12px 24px;
+    margin: 0 10px;
+    border: none;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    z-index: 100;
+}
+
+/* Login button styling */
+.logInBtns .login {
+    background: linear-gradient(to right, #00eaff, #00ff9d);
+    color: black;
+    box-shadow: 0px 0px 15px rgba(0, 255, 255, 0.8);
+    z-index: 100;
+}
+
+.logInBtns .login:hover {
+    background: linear-gradient(to right, #00ff9d, #00eaff);
+    box-shadow: 0px 0px 25px rgba(0, 255, 255, 1);
+    z-index: 100;
+}
+
+/* Signup button styling */
+.logInBtns .signup {
+    background: linear-gradient(to right, #b400ff, #ff009d);
+    color: black;
+    box-shadow: 0px 0px 15px rgba(180, 0, 255, 0.8);
+    z-index: 100;
+}
+
+.logInBtns .signup:hover {
+    background: linear-gradient(to right, #ff009d, #b400ff);
+    box-shadow: 0px 0px 25px rgba(180, 0, 255, 1);
+    z-index: 100;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .not-loggedIn {
+        width: 95%;
+        padding: 20px;
+    }
+
+    .logInBtns button {
+        width: 45%;
+    }
+
+    .not-loggedIn .login-heading {
+        font-size: 1.5rem;
+    }
+
+    .not-loggedIn .login-description {
+        font-size: 0.9rem;
+        max-width: 90%;
+    }
+}
+
+/* Logout Strip Styling */
+.logOutBtn {
+    width: 100%;
+    padding: 10px 20px;
+    background: rgba(15, 15, 30, 0.95);
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    border: 2px solid rgba(34, 0, 255, 0.6);
+    border-bottom: none;
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.4);
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    z-index: 100;
+    position: relative;
+}
+
+/* Avatars */
+.avatar-wrapper {
+    width: 80%;
+    max-width: 900px;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(12px);
+    border-radius: 15px;
+    padding: 20px;
+    margin-top: 20px;
+    box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    overflow: hidden;
+    z-index: 100;
+}
+
+.avatar-title {
+    text-align: center;
+    font-size: 1.8rem;
+    color: #fff;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.avatar-container {
+    max-height: 400px;
+    overflow-y: auto;
+    padding: 10px;
+}
+
+.avatar-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.avatar-container::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+}
+
+.avatar-container .col {
+    display: flex;
+    justify-content: center;
+}
+
+.avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+    border: 3px solid transparent;
+}
+
+.avatar:hover {
+    transform: scale(1.1);
+    box-shadow: 0px 0px 12px rgba(0, 255, 255, 0.7);
+}
+
+.user-profile-panel {
+    position: absolute; /* changed from absolute */
+    top: 70px;
+    right: 30px;
+    background: #10152c;
+    border-radius: 16px;
+    padding: 12px 16px;
+    width: 220px;
+    box-shadow: 0 0 15px #0ff, 0 0 25px #6708c6;
+    z-index: 9999; /* very high */
+    display: none;
+    font-family: 'Orbitron', sans-serif;
+}
+
+.user-profile-panel ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.user-profile-panel li {
+    padding: 10px;
+    color: #fff;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.user-profile-panel li:last-child {
+    border-bottom: none;
+}
+
+.user-profile-panel li:hover {
+    background: #1f2946;
+    color: #0ff;
+}
+
+.personalization {
+    width: 55px;
+    height: 100%;
+    border-radius: 50%;
+    margin-left: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid #0ff;
+    transition: transform 0.3s ease;
+}
+
+.personalization:hover {
+    transform: scale(1.1);
+}
+
+.edit-profile-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  position: relative;
+  top: 10px;
+  left: 150px;
+  height: 98vh;
+  max-width: 1000px;
+  background: rgb(15, 15, 30);
+  border-radius: 15px;
+  box-shadow: 0px 0px 20px rgba(0, 255, 255, 0.4);
+  border: 2px solid rgba(0, 255, 255, 0.6);
+  padding: 20px;
+  z-index: 5000;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.edit-profile-container {
+  width: 60%;
+  padding: 30px;
+  text-align: center;
+}
+
+#editProfile-h1 {
+  color: #00eaff;
+  font-family: "Orbitron", sans-serif;
+  font-weight: bold;
+  font-size: 1.8rem;
+  text-shadow: 0px 0px 8px rgba(0, 238, 255, 0.8);
+  margin-bottom: 20px;
+}
+
+.edit-profile-container input {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #00eaff;
+  font-size: 16px;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.edit-profile-container input:focus {
+  box-shadow: 0px 0px 10px #00eaff;
+  border: 1px solid #00eaff;
+}
+
+.edit-btn {
+  width: 100%;
+  padding: 12px;
+  margin-top: 20px;
+  border: none;
+  border-radius: 8px;
+  font-size: 18px;
+  color: black;
+  font-weight: bold;
+  background: linear-gradient(to right, #00eaff, #00ff9d);
+  cursor: pointer;
+  box-shadow: 0px 0px 15px rgba(0, 255, 255, 0.8);
+  transition: all 0.3s ease-in-out;
+}
+
+.edit-btn:hover {
+  background: linear-gradient(to right, #00ff9d, #00eaff);
+  box-shadow: 0px 0px 25px rgba(0, 255, 255, 1);
+}
+
+#settings-h1 {
+    color: #0ff;
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== Responsive Design ===== */
+
+/* Small screens (mobile) */
+
+@media (min-width: 300px) and (max-width: 500px) {
+  .avatar-wrapper {
+    width: 100%;
+    padding: 15px 10px;
+    margin-top: 15px;
+    border-radius: 12px;
+  }
+
+  .avatar-title {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+  }
+
+  .avatar {
+    width: 70px;
+    height: 70px;
+    border: 2px solid transparent;
+  }
+
+  .avatar:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 0px 8px rgba(0, 255, 255, 0.6);
+  }
+}
+
+@media (max-width: 600px) {
+  .not-loggedIn {
+    width: 95%;
+    padding: 20px;
+    border-radius: 12px;
+  }
+
+  .not-loggedIn img {
+    max-width: 180px;
+    width: 100%;
+  }
+
+  .not-loggedIn .login-heading {
+    font-size: 1.4rem;
+    margin-bottom: 20px;
+  }
+
+  .not-loggedIn .login-description {
+    font-size: 0.85rem;
+    max-width: 100%;
+  }
+
+  .logInBtns {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 18px;
+    width: 100%;
+  }
+
+  .logInBtns button {
+    width: 100%;
+    font-size: 1rem;
+    padding: 10px;
+  }
+}
+@media (min-width: 601px) and (max-width: 992px) {
+  .not-loggedIn {
+    width: 90%;
+    padding: 30px;
+    border-radius: 14px;
+  }
+
+  .not-loggedIn img {
+    max-width: 220px;
+  }
+
+  .not-loggedIn .login-heading {
+    font-size: 1.6rem;
+  }
+
+  .not-loggedIn .login-description {
+    font-size: 0.95rem;
+    max-width: 90%;
+  }
+
+  .logInBtns {
+    flex-direction: row;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 22px;
+  }
+
+  .logInBtns button {
+    width: 45%;
+    padding: 11px;
+    margin-top: 15px;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .edit-profile-wrapper {
+    flex-direction: column;
+    left: 0;
+    top: 0;
+    width: 95vw;
+    max-width: 500px;
+    margin: 20px auto;
+    padding: 20px;
+    height: auto;
+    box-shadow: 0px 0px 12px rgba(0, 255, 255, 0.3);
+    overflow: hidden;
+  }
+
+  .site-pic img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 15px;
+    object-fit: cover;
+  }
+
+  .edit-profile-container {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+  }
+
+  #editProfile-h1 {
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+  }
+
+  .edit-profile-container input,
+  .edit-btn {
+    width: 100%;
+    font-size: 15px;
+    padding: 10px;
+    box-sizing: border-box;
+    margin-bottom: 12px;
+  }
+}
+
+/* Medium screens (tablet) */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .edit-profile-wrapper {
+    flex-direction: column;
+    left: 0;
+    width: 85%;
+    margin: auto;
+    height: auto;
+  }
+
+  .edit-profile-container {
+    width: 80%;
+  }
+
+  .site-pic img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-bottom: 15px;
+  }
+
+  #editProfile-h1 {
+    font-size: 1.6rem;
+  }
+}
+
+/* Large screens (default, ≥1025px): you’re already good */

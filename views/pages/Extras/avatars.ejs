@@ -1,0 +1,36 @@
+<% layout("/layouts/spaceshipBoiler") %>
+
+<div class="main-content d-flex justify-content-center align-items-center">
+    <div class="avatar-wrapper">
+        <h1 class="avatar-title">
+            <% if (typeof isProfileUpdate !== "undefined" && isProfileUpdate) { %>
+                Choose a New Avatar
+            <% } else { %>
+                Choose Your Avatar To Complete Signing Up
+            <% } %>
+        </h1>
+
+        <div class="avatar-container row gx-3 gy-4"></div>
+
+        <!-- Hidden Form -->
+        <form 
+            action="<%= isProfileUpdate ? '/update-avatar?_method=PUT' : '/signup' %>" 
+            method="POST" 
+            id="avatarForm"
+            data-username="<%= username %>" 
+            data-email="<%= email %>" 
+            data-password="<%= password %>">
+
+
+            <% if (!isProfileUpdate) { %>
+                <input type="hidden" name="username" id="usernameInput">
+                <input type="hidden" name="email" id="emailInput">
+                <input type="hidden" name="password" id="passwordInput">
+            <% } %>
+
+            <input type="hidden" name="avatar" id="selectedAvatar">
+        </form>
+    </div>
+</div>
+
+<script src="/js/boilerplateJS/avatars.js"></script>

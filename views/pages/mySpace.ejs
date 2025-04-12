@@ -1,0 +1,145 @@
+<% layout("/layouts/spaceshipBoiler") %>
+
+<div class="main-content">
+    <% if(!currUser) {%>
+        <div class="not-loggedIn">
+            <img src="https://cdn.jsdelivr.net/gh/mishraRj/rjtv-trailers/General%20Data/locked.png" alt="locked">
+            <br>
+            <h2 class="login-heading">Login to RJTV Universe</h2>
+            <br>
+            <p class="login-description">Start your cosmic Journey Where you left off!</p>
+            <div class="logInBtns">
+                <a href="/login"><button class="login">Login</button></a>
+                <a href="/signup"><button class="signup">Sign Up</button></a>
+            </div>
+        </div>
+    <% } else{ %>
+        <div class="logOutBtn">
+            <h6 class="mySpace-email" id="highScore"> High Score: <%= currUser.highScore %> |</h6>
+            <h6 class="mySpace-email"> <%= currUser.email %></h6>
+            <img src="<%= currUser.avatar %>" class="personalization" alt="">
+        </div>
+
+        <!-- MOVE THIS OUTSIDE THE logout div and position globally -->
+        <div class="user-profile-panel" id="userPanel">
+            <ul>
+                <a href="/edit-profile"><li><i class="fas fa-user-edit"></i> Edit Profile</li></a>
+                <a href="/choose-avatar"><li><i class="fas fa-camera-retro"></i> Alien Avatars</li></a>
+                <a href="/themes"><li><i class="fas fa-palette"></i> Change Theme</li></a>
+                <a href="/games"><li><i class="fas fa-gamepad"></i> Lights of Vega</li></a>
+                <a href="/logout"><li><i class="fas fa-sign-out-alt"></i> Logout</li></a>
+            </ul>
+        </div>
+
+        <h2>Watch History</h2>
+        <br><br>
+        <% if(watchHistory.length > 0) {%>
+            <div class="container swiper" id="container2">
+            <div class="slider-wrapper" id="slider-wrapper2">
+                <div class="card-list swiper-wrapper" id="card-list">
+                        <% for (let movie of watchHistory) { %>
+                            <div class="card-item swiper-slide" id="card-item2">
+                                <form action="/watchHistory/delete" method="POST" style="display: inline;">
+                                    <input type="hidden" name="movieId" value="<%= movie._id %>">
+                                    <input type="hidden" name="sourceCollection" value="<%= movie.channel %>">
+                                    <input type="hidden" name="movieTitle" value="<%= movie.title %>">
+                                    <button type="submit" style="display: none;" class="hidden-submit-btn"></button>
+                                    <i class="fas fa-trash" onclick="this.closest('form').querySelector('.hidden-submit-btn').click()" style="cursor: pointer;"></i>
+                                </form>
+                                <div class="history-banner">
+                                    <a href="/home_page/<%= movie._id %>-<%= movie.title %>">
+                                    <img src="<%= movie.banner %>" alt="img" class="user-image" id="user-image2">
+                                    <h6 class="history-title mt-2">"<%= movie.title %>" </h6>
+                                </a>
+                                <div class="history-description">
+                                    <p>"<%= movie.description %>"</p>
+                                </div>
+                                </div>
+                            </div>
+                        <% } %>
+                </div>
+
+                <div class="swiper-pagination"></div>
+                <div class="swiper-slide-button swiper-button-prev"></div>
+                <div class="swiper-slide-button swiper-button-next"></div>
+            </div>
+            </div>
+        <% } else {%>
+                <div class="empty-bucket">
+                <div class="bucket">
+                    <img src="https://cdn.jsdelivr.net/gh/mishraRj/rjtv-trailers/General%20Data/WH.webp" alt="img">
+                </div>
+            </div>
+            <% } %>
+        <br>
+        <h2>Watch Bucket</h2>
+        <br><br>
+        <% if(watchLaterMovies.length > 0) {%>
+            <div class="container swiper" id="container2">
+            <div class="slider-wrapper" id="slider-wrapper">
+                <div class="card-list swiper-wrapper" id="card-list">
+                        <% for (let movie of watchLaterMovies) { %>
+                            <div class="card-item swiper-slide" id="card-item">
+                                <form action="/watchLater/toggle" method="POST" style="display: inline;">
+                                    <input type="hidden" name="movieId" value="<%= movie._id %>">
+                                    <input type="hidden" name="sourceCollection" value="<%= movie.channel %>">
+                                    <input type="hidden" name="movieTitle" value="<%= movie.title %>">
+                                    <button type="submit" style="display: none;" class="hidden-submit-btn"></button>
+                                    <i class="fas fa-trash" onclick="this.closest('form').querySelector('.hidden-submit-btn').click()" style="cursor: pointer;"></i>
+                                </form>
+                                <a href="/home_page/<%= movie._id %>-<%= movie.title %>">
+                                    <img src="<%= movie.image.url %>" alt="img" class="user-image" id="user-image">
+                                </a>
+                            </div>
+                        <% } %>
+                </div>
+
+                <div class="swiper-pagination"></div>
+                <div class="swiper-slide-button swiper-button-prev"></div>
+                <div class="swiper-slide-button swiper-button-next"></div>
+            </div>
+            </div>
+        <% } else { %>
+            <br>
+            <div class="empty-bucket">
+                <div class="bucket">
+                    <img src="https://cdn.jsdelivr.net/gh/mishraRj/rjtv-trailers/General%20Data/WB.webp" alt="img">
+                </div>
+            </div>
+        <% } %>
+            <br>
+            <h2>Favorites</h2>
+            <br><br>
+            <% if(favoriteMovies.length > 0) {%>
+            <div class="container swiper" id="container2">
+            <div class="slider-wrapper" id="slider-wrapper">
+                <div class="card-list swiper-wrapper" id="card-list">
+                        <% for (let movie of favoriteMovies) { %>
+                            <div class="card-item swiper-slide" id="card-item">
+                                <form action="/favorites/toggle" method="POST" style="display: inline;">
+                                    <input type="hidden" name="movieId" value="<%= movie._id %>">
+                                    <input type="hidden" name="sourceCollection" value="<%= movie.channel %>">
+                                    <input type="hidden" name="movieTitle" value="<%= movie.title %>">
+                                    <button type="submit" style="display: none;" class="hidden-submit-btn"></button>
+                                    <i class="fas fa-trash" onclick="this.closest('form').querySelector('.hidden-submit-btn').click()" style="cursor: pointer;"></i>
+                                </form>
+                                <a href="/home_page/<%= movie._id %>-<%= movie.title %>">
+                                    <img src="<%= movie.image.url %>" alt="img" class="user-image" id="user-image">
+                                </a>
+                            </div>
+                        <% } %>
+                </div>
+                <div class="swiper-pagination"></div>
+                <div class="swiper-slide-button swiper-button-prev"></div>
+                <div class="swiper-slide-button swiper-button-next"></div>
+            </div>
+            </div>
+        <% } else { %>
+            <div class="empty-bucket">
+                <div class="bucket">
+                    <img src="https://cdn.jsdelivr.net/gh/mishraRj/rjtv-trailers/General%20Data/FV.webp" alt="">
+                </div>
+            </div>
+        <% } %>
+    <% } %>
+</div>

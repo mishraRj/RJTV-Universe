@@ -1,0 +1,61 @@
+<% layout("/layouts/boilerplate") %>
+
+<div class="main-content" style="background-image: url('<%= themeUrl %>');">
+    <div class="plans-wrapper">
+    <div class="plans-card">
+        <h1 class="plans-title">🚀 Choose Your Destiny</h1>
+        <p class="plans-subtitle">Unlock realms of exclusive content with a plan that suits your cosmic journey.</p>
+        <table class="plans-table">
+            <thead>
+                <tr>
+                <th>Plan</th>
+                <th>Price</th>
+                <th>Features</th>
+                <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                <td>Platinum</td>
+                <td>₹199/month</td>
+                <td>
+                    <ul>
+                    <li>Access to HD content</li>
+                    <li>Watch on 2 devices</li>
+                    <li>No ads</li>
+                    </ul>
+                </td>
+                <td>
+                    <button 
+                        type="button" 
+                        class="plan-btn" 
+                        onclick="handlePurchase(this)">
+                        Buy Plan
+                    </button>
+                </td>
+                </tr>
+                <tr>
+                <td>Diamond</td>
+                <td>₹299/month</td>
+                <td>
+                    <ul>
+                    <li>Ultra HD + 4K content</li>
+                    <li>Watch on 4 devices</li>
+                    <li>Early access to premieres</li>
+                    <li>No ads + Bonus trailers</li>
+                    </ul>
+                </td>
+                <td>
+                    <button 
+                        type="button" 
+                        class="plan-btn" 
+                        onclick="handlePurchase(this)">
+                        Buy Plan
+                    </button>
+                </td>
+                </tr>
+            </tbody>
+            </table>
+        </div>
+    </div>
+</div>

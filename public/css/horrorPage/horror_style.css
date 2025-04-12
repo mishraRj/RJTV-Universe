@@ -1,0 +1,420 @@
+ *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Orbitron', sans-serif;
+}
+body{
+    background-image: url("https://cdn.jsdelivr.net/gh/mishraRj/rjtv-trailers/Themes/a%20(1).webp");
+    overflow-x: hidden;
+}
+
+.banner{
+    width: 100%;
+    height: 60vh;
+    text-align: center;
+    overflow: hidden;
+    position: relative;
+}
+.banner .slider{
+    position: absolute;
+    width: 150px;
+    height: 200px;
+    top: 10%;
+    left: calc(52% - 100px);
+    transform-style: preserve-3d;
+    transform: perspective(800px);
+    animation: autoRun 50s linear infinite;
+    z-index: 2;
+}
+@keyframes autoRun{
+    from{
+        transform: perspective(800px) rotateX(-16deg) rotateY(0deg);
+    }to{
+        transform: perspective(800px) rotateX(-16deg) rotateY(360deg);
+    }
+}
+
+.banner .slider .item{
+    position: absolute;
+    inset: 0 0 0 0;
+    transform: 
+        rotateY(calc( (var(--position) - 1) * (360 / var(--quantity)) * 1deg))
+        translateZ(280px);
+}
+.banner .slider .item img{
+    width: 80%;
+    height: 80%;
+    border-top-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+    object-fit: cover;
+}
+@media screen and (max-width: 1023px) {
+    .banner .slider{
+        width: 160px;
+        height: 200px;
+        left: calc(50% - 80px);
+    }
+    .banner .slider .item{
+        transform: 
+            rotateY(calc( (var(--position) - 1) * (360 / var(--quantity)) * 1deg))
+            translateZ(300px);
+    }
+    .banner .content h1{
+        text-align: center;
+        width: 100%;
+        text-shadow: 0 10px 20px #000;
+        font-size: 7em;
+    }
+    .banner .content .author{
+        color: #fff;
+        padding: 20px;
+        text-shadow: 0 10px 20px #000;
+        z-index: 2;
+        max-width: unset;
+        width: 100%;
+        text-align: center;
+        padding: 0 30px;
+    }
+}
+@media screen and (max-width: 767px) {
+    .banner .slider{
+        width: 100px;
+        height: 150px;
+        left: calc(50% - 50px);
+    }
+    .banner .slider .item{
+        transform: 
+            rotateY(calc( (var(--position) - 1) * (360 / var(--quantity)) * 1deg))
+            translateZ(180px);
+    }
+    .banner .content h1{
+        font-size: 5em;
+    }
+}
+
+/* Style for the planet container */
+.planet {
+    position: absolute;
+    width: 200px; /* Adjust size as needed */
+    height: 200px; /* Adjust size as needed */
+    top: 36%;
+    left: 42%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%; /* Makes the container circular */
+    overflow: hidden; /* Ensures the image fits within the circle */
+    animation: planet 3s ease-in-out infinite alternate;
+}
+
+/* Style for the planet image */
+.planet img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the image covers the entire div */
+    border-radius: 50%; /* Makes the image appear circular within the div */
+}
+
+@keyframes planet{
+    0%{
+        transform: translateY(4px);
+    }
+    100%{
+        transform: translateY(-4px);
+    }
+}
+
+/* Content */
+/* Content */
+#horrorH2 {
+    font-size: 2.5rem;
+    color: white;
+    position: relative; /* Keep this to maintain positioning */
+    left: 100px; /* Keep this if you want it offset from the left */
+    z-index: 1;
+    width: 90%;
+    margin-bottom: 10px; /* Add margin to separate from the posters */
+    text-align: center;
+    animation: glow 1.5s infinite alternate; /* Adding the glowing animation */
+}
+
+@keyframes glow {
+    0% {
+        text-shadow: 0 0 5px rgba(255, 255, 255, 0.8), 0 0 10px rgba(255, 0, 0, 0.5), 0 0 15px rgba(255, 0, 0, 0.5), 0 0 20px rgba(255, 0, 0, 0.5);
+    }
+    100% {
+        text-shadow: 0 0 10px rgba(255, 255, 255, 1), 0 0 20px rgba(255, 0, 0, 1), 0 0 30px rgba(255, 0, 0, 1), 0 0 40px rgba(255, 0, 0, 1);
+    }
+}
+
+
+.posters {
+    width: 91.5%;
+    height: auto;
+    position: relative;
+    left: 30px;
+    padding-bottom: 20px; /* Adds padding at the bottom for spacing */
+}
+
+.card {
+    width: 100%; /* Full width for Bootstrap grid */
+    height: 13rem; /* Ensure a fixed height */
+    border-top-left-radius: 25%;
+    border-bottom-right-radius: 25%;
+    position: relative;
+    cursor: pointer;
+    z-index: 40;
+    overflow: hidden;
+    box-shadow: 0 0 10px #FFFFFF, 0 0 15px #194e63;
+    transition: transform 1s ease, opacity 0.5s ease;
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.card img {
+    object-fit: cover;
+    border-top-left-radius: 25%;
+    border-bottom-right-radius: 25%;
+    width: 100%;
+    height: 100%;
+}
+
+.card:hover {
+    transform: scale(1.08);
+    z-index: 200;
+    box-shadow: 0 10px 25px #6708c6;
+}
+@media (min-width: 401px) and (max-width: 500px){
+    .card{
+        height: 8rem;
+    }
+}
+@media (min-width: 501px) and (max-width: 600px){
+    .card{
+        height: 10rem;
+    }
+}
+
+@media (min-width: 601px) and (max-width: 700px){
+    .card{
+        height: 11rem;
+    }
+}
+
+@media (min-width: 701px) and (max-width: 991px){
+    .card{
+        height: 12rem;
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1100px){
+    .card{
+        height: 10rem;
+    }
+}
+
+@media (min-height: 375px) and (max-width: 654px) {
+    #horrorH2 {
+        font-size: 2rem;
+        left: 5px;
+    }
+
+    .posters{
+        left: 0;
+    }
+}
+
+@media (min-height: 300px) and (max-width: 400px) {
+
+    .card{
+        height: 5.5rem;
+    }
+
+    #horrorH2 {
+        font-size: 1.5rem;
+        left: 5px;
+    }
+
+    .planet{
+        top: 0;
+        left: 0%;
+        width: 80px;
+        height: 80px;
+    }
+
+    .banner{
+        height: 10vh;
+    }
+
+    .banner .slider .item{
+        transform: 
+            rotateY(calc( (var(--position) - 1) * (360 / var(--quantity)) * 1deg))
+            translateZ(0);
+    }
+
+    .banner .slider .item img{
+        width: 60%;
+        height: 60%;
+    }
+    .content-headings{
+        font-size: 1rem;
+    }
+}
+
+@media (min-height: 401px) and (max-width: 500px) {
+
+    
+
+    .planet{
+        top: 43%;
+        left: 35%;
+        width: 110px;
+        height: 110px;
+    }
+
+    .banner{
+        height: 42vh;
+    }
+
+    .banner .slider .item{
+        transform: 
+            rotateY(calc( (var(--position) - 1) * (360 / var(--quantity)) * 1deg))
+            translateZ(130px);
+    }
+}
+
+@media (min-height: 501px) and (max-width: 600px) {
+
+    .planet{
+        top: 43%;
+        left: 38%;
+        width: 140px;
+        height: 140px;
+    }
+
+    .banner{
+        height: 44vh;
+    }
+
+    .banner .slider .item{
+        transform: 
+            rotateY(calc( (var(--position) - 1) * (360 / var(--quantity)) * 1deg))
+            translateZ(190px);
+    }
+}
+
+@media (min-width: 601px) and (max-width: 766px) {
+
+    .planet{
+        top: 38%;
+        left: 38%;
+        width: 200px;
+        height: 200px;
+    }
+
+    .banner{
+        height: 60vh;
+    }
+
+    .banner .slider .item{
+        transform: 
+            rotateY(calc( (var(--position) - 1) * (360 / var(--quantity)) * 1deg))
+            translateZ(250px);
+    }
+
+    .banner .slider .item img{
+    width: 100%;
+    height: 100%;
+}
+}
+
+h5 {
+    font-size: 1rem;
+    color: wheat;
+    position: absolute; /* Change to relative */
+    right: 40px; /* Keep this if you want it offset from the left */
+    z-index: 1;
+    opacity: 0.7;
+    margin-bottom: 50px;
+    cursor: pointer;
+}
+
+/* Entry Screen Styling */
+.entry-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+}
+
+.entry-ghost {
+    width: 300px;
+    height: auto;
+    opacity: 0.9;
+    animation: pulse 2s infinite alternate;
+}
+
+#entryButton {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 1.5em; /* Increased font size for more impact */
+    color: white;
+    background-color: #8B0000; /* Dark red for a blood-like color */
+    border: 2px solid #000; /* Black border for a more defined edge */
+    border-radius: 8px; /* Rounded corners */
+    cursor: pointer;
+    text-shadow: 1px 1px 5px black; /* Adds depth with a shadow effect */
+    transition: all 0.3s ease; /* Smooth transition for hover effects */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.7); /* Adds a shadow for a spooky effect */
+}
+
+#entryButton:hover {
+    background-color: #600000; /* Darker red on hover */
+    transform: scale(1.1); /* Slightly enlarges the button on hover */
+    box-shadow: 0 0 20px rgba(255, 0, 0, 1), 0 0 30px rgba(255, 0, 0, 0.5); /* Red glow effect on hover */
+}
+
+#entryButton:active {
+    background-color: #400000; /* Even darker red when clicked */
+    box-shadow: 0 0 10px rgba(255, 0, 0, 1), 0 0 20px rgba(255, 0, 0, 0.5); /* Intensified glow when pressed */
+}
+
+
+/* Zoom-out Animation */
+@keyframes zoomOut {
+    from {
+        transform: scale(1);
+        opacity: 1;
+    }
+    to {
+        transform: scale(0);
+        opacity: 0;
+    }
+}
+
+/* Pulsing Animation for Ghost */
+@keyframes pulse {
+    from {
+        transform: scale(1);
+    }
+    to {
+        transform: scale(1.1);
+    }
+}
+
+.zoom-out {
+    animation: zoomOut 0.8s forwards; /* Adjust the duration as needed */
+}

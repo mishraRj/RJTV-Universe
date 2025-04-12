@@ -1,0 +1,501 @@
+html, body {
+    width: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Orbitron', sans-serif;
+    scroll-behavior: smooth;
+}
+
+body{
+    transition: 2s ease-in;
+    display: flex;
+    flex-direction: column; /* Ensures content stacks properly */
+    background-color: #121212;
+    background-image: url('https://res.cloudinary.com/dsa8vlzig/image/upload/v1741534599/Universe_hefbvo.jpg'); /* Adjust the path if necessary */
+    background-size: initial;
+    overflow-x: hidden;
+  overflow-y: auto;
+    transition: background-image 8s ease-in-out; /* Smooth transition */
+    margin: 0; /* Remove default margin */
+}
+
+/* Center the signup wrapper with a wide card effect */
+.signup-wrapper {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: row;
+    position: fixed;
+    top: 2px;
+    left: 220px;
+    height: 98vh;
+    max-width: 1000px;
+    margin: auto;
+    margin-bottom: 20px;
+    background: rgb(15, 15, 30); /* Dark cosmic theme */
+    border-radius: 15px;
+    box-shadow: 0px 0px 20px rgba(0, 255, 255, 0.4);
+    border: 2px solid rgba(0, 255, 255, 0.6);
+    padding: 20px;
+    z-index: 1000;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Fade-in effect */
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+/* Left side image */
+.site-pic {
+    width: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    border-radius: 12px;
+}
+
+.site-pic img {
+    width: 100%;
+    height: auto;
+    max-width: 300px;
+    border-radius: 20px;
+    box-shadow: 0px 0px 20px rgba(0, 255, 255, 0.6);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.site-pic img:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 0px 30px rgba(0, 255, 255, 0.8);
+}
+
+/* Signup container with neon glow */
+.signup-container {
+    width: 60%;
+    padding: 30px;
+    text-align: center;
+}
+
+/* Heading with a futuristic font */
+#signUp-h1{
+    color: #00eaff !important;
+    font-family: "Orbitron", sans-serif;
+    font-weight: bold;
+    font-size: 1.8rem;
+    text-shadow: 0px 0px 8px rgba(0, 238, 255, 0.8) !important;
+    margin-bottom: 20px;
+}
+
+label{
+    color: #fff;
+    text-shadow: 0px 0px 8px rgba(0, 238, 255, 0.8);
+}
+
+/* Input fields with neon borders */
+.signup-container input {
+    width: 100%;
+    padding: 12px;
+    /* margin: 10px 0; */
+    border: none;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.1);
+    color: #00eaff;
+    font-size: 16px;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.signup-container input:focus {
+    box-shadow: 0px 0px 10px #00eaff;
+    border: 1px solid #00eaff;
+}
+
+/* Signup button with animated glow */
+.signup-btn {
+    width: 100%;
+    padding: 12px;
+    margin-top: 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 18px;
+    color: black;
+    font-weight: bold;
+    background: linear-gradient(to right, #00eaff, #00ff9d);
+    cursor: pointer;
+    box-shadow: 0px 0px 15px rgba(0, 255, 255, 0.8);
+    transition: all 0.3s ease-in-out;
+}
+
+.signup-btn:hover {
+    background: linear-gradient(to right, #00ff9d, #00eaff);
+    box-shadow: 0px 0px 25px rgba(0, 255, 255, 1);
+}
+
+/* Login link with a futuristic glow */
+.login-link {
+    margin-top: 15px;
+    font-size: 14px;
+    color: #00eaff;
+}
+
+.login-link a {
+    color: #00ff9d;
+    font-weight: bold;
+    text-decoration: none;
+    text-shadow: 0px 0px 10px rgba(0, 255, 157, 0.8);
+}
+
+.login-link a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .signup-wrapper {
+        flex-direction: column;
+        max-width: 90%;
+    }
+
+    .site-pic {
+        width: 100%;
+        height: auto;
+        border-radius: 10px 10px 0px 0px;
+    }
+
+    .signup-container {
+        width: 100%;
+    }
+}
+
+/* Center the login wrapper with a wide card effect */
+.login-wrapper {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: row;
+    position: fixed;
+    top: 20px;
+    left: 220px;
+    height: 95vh;
+    max-width: 850px;
+    margin: auto;
+    background: rgba(10, 5, 25, 0.95); /* Darker cosmic theme */
+    border-radius: 15px;
+    box-shadow: 0px 0px 20px rgba(180, 0, 255, 0.4);
+    border: 2px solid rgba(180, 0, 255, 0.6);
+    padding: 20px;
+    z-index: 1000;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Left side image */
+.site-pic-login {
+    width: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    border-radius: 12px;
+}
+
+.site-pic-login img {
+    width: 100%;
+    height: auto;
+    max-width: 300px;
+    border-radius: 20px;
+    box-shadow: 0px 0px 20px rgba(180, 0, 255, 0.6);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.site-pic-login img:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 0px 30px rgba(180, 0, 255, 0.8);
+}
+
+/* Login container with a subtle purple glow */
+.login-container {
+    width: 60%;
+    padding: 30px;
+    text-align: center;
+}
+
+/* Heading with a mysterious, futuristic font */
+.loginH1 {
+    color: #b400ff;
+    font-family: "Orbitron", sans-serif;
+    font-weight: bold;
+    font-size: 1.8rem;
+    text-shadow: 0px 0px 8px rgba(180, 0, 255, 0.8);
+    margin-bottom: 20px;
+}
+
+/* Label styling */
+label {
+    color: #fff;
+    text-shadow: 0px 0px 8px rgba(180, 0, 255, 0.8);
+}
+
+/* Input fields with neon purple borders */
+.login-container input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.1);
+    color: #b400ff;
+    font-size: 16px;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.login-container input:focus {
+    box-shadow: 0px 0px 10px #b400ff;
+    border: 1px solid #b400ff;
+}
+
+/* Login button with animated purple glow */
+.login-btn {
+    width: 100%;
+    padding: 12px;
+    margin-top: 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 18px;
+    color: black;
+    font-weight: bold;
+    background: linear-gradient(to right, #b400ff, #ff009d);
+    cursor: pointer;
+    box-shadow: 0px 0px 15px rgba(180, 0, 255, 0.8);
+    transition: all 0.3s ease-in-out;
+}
+
+/* Button hover effect */
+.login-btn:hover {
+    background: linear-gradient(to right, #ff009d, #b400ff);
+    box-shadow: 0px 0px 25px rgba(180, 0, 255, 1);
+}
+
+/* Login link with a neon pink glow */
+.signup-link {
+    margin-top: 15px;
+    font-size: 14px;
+    color: #b400ff;
+}
+
+.signup-link a {
+    color: #ff009d;
+    font-weight: bold;
+    text-decoration: none;
+    text-shadow: 0px 0px 10px rgba(255, 0, 157, 0.8);
+}
+
+.signup-link a:hover {
+    text-decoration: underline;
+}
+
+.google-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    color: black;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 15px;
+}
+
+.google-btn img {
+    width: 20px;
+    margin-right: 10px;
+}
+
+.terms-check {
+    margin-top: 15px;
+    text-align: center;
+    font-size: 0.9rem;
+    color: #ccc;
+}
+
+.terms-check input[type="checkbox"] {
+    margin-right: 8px;
+    transform: scale(1.2);
+    accent-color: #00eaff;
+}
+
+.terms-check a {
+    color: #00eaff;
+    text-decoration: underline;
+}
+
+.glow-checkbox {
+    box-shadow: 0 0 10px #ff0033;
+    transition: box-shadow 0.3s ease-in-out;
+}
+.terms-msg {
+    color: #ff4d4d;
+    font-size: 14px;
+    text-align: center;
+    margin-bottom: 10px;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .login-wrapper {
+    flex-direction: column;
+    left: 0;
+    top: 0;
+    width: 95vw;
+    max-width: 500px;
+    margin: 20px auto;
+    padding: 20px;
+    height: auto;
+    overflow: hidden;
+    box-shadow: 0px 0px 12px rgba(180, 0, 255, 0.3);
+  }
+
+  .site-pic-login {
+    width: 100%;
+    padding: 9px;
+    justify-content: center;
+  }
+
+  .site-pic-login img {
+    width: 100px;
+    height: 100px;
+    border-radius: 12px;
+    object-fit: cover;
+    margin-bottom: 13px;
+  }
+
+  .login-container {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+  }
+
+  .loginH1 {
+    font-size: 1.1rem;
+    margin-bottom: 13px;
+  }
+
+  .login-container input,
+  .login-btn,
+  .google-btn {
+    width: 100%;
+    font-size: 13px;
+    padding: 9px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+  }
+
+  .signup-link {
+    font-size: 0.8rem;
+  }
+
+  .close-btn {
+    font-size: 1rem;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
+
+  .signup-wrapper {
+    flex-direction: column;
+    left: 0;
+    top: 0;
+    width: 95vw;
+    max-width: 480px;
+    margin: 12px auto;
+    padding: 14px;
+    height: auto;
+    overflow: hidden;
+    box-shadow: 0px 0px 12px rgba(180, 0, 255, 0.3);
+  }
+
+  .site-pic {
+    width: 100%;
+    padding: 8px;
+    justify-content: center;
+    display: flex;
+  }
+
+  .site-pic img {
+    width: 90px;
+    height: 90px;
+    border-radius: 12px;
+    object-fit: cover;
+    margin-bottom: 12px;
+  }
+
+  .signup-container {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+  }
+
+  #signUp-h1 {
+    font-size: 1rem;
+    margin-bottom: 12px;
+  }
+
+  .signup-container input,
+  .signup-btn,
+  .google-btn {
+    width: 100%;
+    font-size: 11.5px;
+    padding: 6px;
+    box-sizing: border-box;
+    margin-bottom: 8px;
+  }
+
+  .login-link {
+    font-size: 0.7rem;
+  }
+}
+@media (max-width: 500px) {
+  .loginH1 {
+    font-size: 1rem;
+  }
+
+  .login-container input,
+  .login-btn,
+  .google-btn {
+    font-size: 0.7rem;
+    padding: 7px;
+  }
+
+  .signup-link {
+    font-size: 0.7rem;
+  }
+
+  #signUp-h1 {
+    font-size: 0.9rem;
+  }
+
+  .signup-container input,
+  .signup-btn,
+  .google-btn {
+    font-size: 0.6rem;
+    padding: 5px;
+  }
+
+  .login-link {
+    font-size: 0.5rem;
+  }
+
+  .site-pic img {
+    width: 70px;
+    height: 70px;
+  }
+}

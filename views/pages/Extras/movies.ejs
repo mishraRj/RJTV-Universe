@@ -1,0 +1,35 @@
+<% layout("/layouts/boilerplate") %>
+
+<div class="main-content" style="background-image: url('<%= themeUrl %>');">
+    <% const movieCategories = [
+    { title: "Bollywood Movies", channel: bollywoodPlanet, movies: bollywood },
+    { title: "Marvel Movies", channel: marvelPlanet, movies: mcu },
+    { title: "Other Hollywood Movies", channel: hollywoodPlanet, movies: hollywood },
+    { title: "Anime Movies", channel: animePlanet, movies: anime },
+    { title: "Cartoon Movies", channel: cartoonsPlanet, movies: cartoon }
+]; 
+%>
+
+<% movieCategories.forEach(category => { %>
+    <br>
+    <h2 class="content-headings"><%= category.title %>...</h2>
+    <a href="http://localhost:3000/home_page/categories/<%= category.channel._id %>"><h5 class="view">...view all...</h5></a>
+    <br>
+    <div class="container swiper" id="container">
+        <div class="slider-wrapper" id="slider-wrapper">
+            <div class="card-list swiper-wrapper" id="card-list">
+                <% for (let movie of category.movies) { %>
+                    <div class="card-item swiper-slide" id="card-item">
+                        <a href="/home_page/<%= movie._id %>-<%= movie.title %>">
+                            <img src="<%= movie.image.url %>" alt="img" class="user-image" id="user-image">
+                        </a>
+                    </div>
+                <% } %>
+            </div>
+            <div class="swiper-slide-button swiper-button-prev"></div>
+            <div class="swiper-slide-button swiper-button-next"></div>
+        </div>
+    </div>
+<% }) %>
+
+</div>

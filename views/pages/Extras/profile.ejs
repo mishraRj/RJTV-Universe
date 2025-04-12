@@ -1,0 +1,59 @@
+<% layout("/layouts/spaceshipBoiler") %>
+
+<div class="main-content">
+    <div class="edit-profile-wrapper">
+        <div class="site-pic">
+            <img src="<%= currUser.avatar %>" alt="Edit Profile Image">
+        </div>
+
+        <div class="edit-profile-container">
+            <i class="fas fa-times"></i>
+            </button>
+            <h1 id="editProfile-h1">🛠 Edit Your Profile</h1>
+            <form action="/edit-profile?_method=PUT" method="POST" enctype="multipart/form-data" class="needs-validation" novalidate>
+            <div class="mb-3">
+                <label for="username" class="form-label">Username</label>
+                <input 
+                type="text"
+                id="username"
+                name="username"
+                class="form-control"
+                value="<%= currUser.username %>"
+                required
+                />
+            </div>
+
+            <% if (!currUser.googleId) { %>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input 
+                type="email"
+                id="email"
+                name="email"
+                class="form-control"
+                value="<%= currUser.email %>"
+                required
+                />
+            </div>
+            <% } else { %>
+            <p style="color: #00ff9d;">Email linked with Google: <%= currUser.email %></p>
+            <% } %>
+
+
+            <div class="mb-3">
+                <label for="avatar" class="form-label">Change Avatar</label>
+                <input 
+                type="file"
+                id="avatar"
+                name="avatar"
+                accept="image/*"
+                class="form-control"
+                />
+            </div>
+
+            <button class="edit-btn">Save Changes</button>
+            </form>
+        </div>
+        </div>
+
+</div>

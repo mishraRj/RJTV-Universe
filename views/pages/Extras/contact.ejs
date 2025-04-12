@@ -1,0 +1,33 @@
+<% layout("/layouts/boilerplate") %>
+
+<div class="contact-wrapper">
+  <div class="site-pic">
+    <img src="https://cdn.jsdelivr.net/gh/mishraRj/rjtv-trailers/General%20Data/rjtv.webp" alt="RJTV Universe">
+  </div>
+
+  <div class="contact-container">
+    <h1 class="contact-heading">📬 Contact RJTV</h1>
+    <p class="contact-intro">Have feedback, suggestions, or want to say hi? Drop us a message below!</p>
+
+    <form class="contact-form needs-validation" action="/sendMessage" method="POST" novalidate>
+      <div class="mb-3">
+        <input type="text" class="form-control" name="name" placeholder="Name" required>
+        <div class="invalid-feedback">Please enter your name.</div>
+      </div>
+
+      <div class="mb-3">
+        <input type="email" class="form-control" name="email" placeholder="Email" required>
+        <div class="invalid-feedback">Please enter a valid email.</div>
+      </div>
+
+      <div class="mb-3">
+        <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
+        <div class="invalid-feedback">Please write your message.</div>
+      </div>
+
+      <button type="submit" class="contact-btn">Send Message</button>
+    </form>
+  </div>
+</div>
+
+

@@ -1,0 +1,32 @@
+<% if(success.length) {%>
+    <div class="success-popUp">
+            <div class="success-error-tv">
+                
+                <!-- Signal Waves -->
+                <div class="success-signal-wave wave1"></div>
+                <div class="success-signal-wave wave2"></div>
+                <div class="success-signal-wave wave3"></div>
+                <img src="https://cdn.jsdelivr.net/gh/mishraRj/rjtv-trailers/General%20Data/successIcon.png" alt="">
+            </div>
+            <button class="close-btn" onclick="closePopup()">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="success-popUp-text">
+                <%= success %>
+            </div>
+    </div>
+<% } %>
+
+<% if(error.length) {%>
+    <div class="error-popUp">
+            <div class="error-error-tv">
+                <img src="https://cdn.jsdelivr.net/gh/mishraRj/rjtv-trailers/General%20Data/errIcon.webp" alt="">
+            </div>
+            <button class="close-btn" onclick="closeErrPopup()">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="error-popUp-text">
+                <%= error %>
+            </div>
+    </div>
+<% } %>

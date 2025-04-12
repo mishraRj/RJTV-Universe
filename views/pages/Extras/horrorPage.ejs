@@ -1,0 +1,52 @@
+<% layout("/layouts/horrorBoilerPlate") %>
+
+<div class="entry-screen" id="entryScreen">
+        <img 
+            src="https://cdn.jsdelivr.net/gh/mishraRj/rjtv-trailers/ghosts/ghost(8).png" 
+            alt="Scary Ghost" 
+            class="entry-ghost"
+        >
+        <button id="entryButton"><b>Click here to enter</b> <br>Enter at your own risk</button>
+    </div>
+                    <audio id="backgroundAudio" loop>
+                        <source src="https://cdn.jsdelivr.net/gh/mishraRj/rjtv-trailers/ghosts/horroBGM.mp3"
+                                type="audio/mp3"
+                        >
+                        Your browser does not support the audio element.
+                    </audio>
+        <div class="banner">
+            <div class="planet">
+                <img src="https://cdn.jsdelivr.net/gh/mishraRj/rjtv-trailers/channels/Ghost_Planet.png" alt="planet">
+            </div>
+            <div class="slider" style="--quantity: 10">
+                <div class="item" style="--position: 1"><img src="https://res.cloudinary.com/dfeejwrim/image/upload/v1744094882/The_Nun_2_bgaj5z_o1cdmh.webp" alt="the nun"></div>
+                <div class="item" style="--position: 2"><img src="https://res.cloudinary.com/dfeejwrim/image/upload/v1744094878/conjuring_d5lsvm_zz7nax.webp" alt="conjuring"></div>
+                <div class="item" style="--position: 3"><img src="https://res.cloudinary.com/dfeejwrim/image/upload/v1744094881/haunted_wjidzg_tvwudv.webp" alt="haunted"></div>
+                <div class="item" style="--position: 4"><img src="https://res.cloudinary.com/dfeejwrim/image/upload/v1744094880/IT_Chapter_2_cmdrx1_ijn6yv.webp" alt="It"></div>
+                <div class="item" style="--position: 5"><img src="https://res.cloudinary.com/dfeejwrim/image/upload/v1744094877/1920org_blr2f8_v6vymf.webp" alt="1920"></div>
+                <div class="item" style="--position: 6"><img src="https://res.cloudinary.com/dfeejwrim/image/upload/v1744094877/1920hearts_frd7dd_nckxuq.webp" alt="1920 Horror of Hearts"></div>
+                <div class="item" style="--position: 7"><img src="https://res.cloudinary.com/dfeejwrim/image/upload/v1744094879/EvilDead_lwrvfv_cohhpq.webp" alt="Evil Dead"></div>
+                <div class="item" style="--position: 8"><img src="https://res.cloudinary.com/dfeejwrim/image/upload/v1744094880/don_tSpeak_ssu3qd_py1r0r.webp" alt="Don't Speak"></div>
+                <div class="item" style="--position: 9"><img src="https://res.cloudinary.com/dfeejwrim/image/upload/v1744094881/Veerana_jl0gah_gkfx5m.webp" alt="Wrong Turn"></div>
+                <div class="item" style="--position: 10"><img src="https://res.cloudinary.com/dfeejwrim/image/upload/v1744094883/Stree_kwbwzc_osespx.webp" alt="Veerana"></div>
+            </div>
+                <div class="model"></div>
+            </div>
+            <br>
+            <h2 id="horrorH2">...Terrifying Thrillers...</h2>
+                <br>
+                <div class="container posters">
+                    <div class="row">
+                        <% for(let movie of horrorMovies) { %>
+                            <div class="col-lg-2 col-md-3 col-4 mb-4"> 
+                                <div class="card">
+                                    <a href="/home_page/<%= movie._id %>-<%= movie.title %>">
+                                        <img src="<%= movie.image.url %>" alt="img">
+                                    </a>
+                                </div>
+                            </div>
+                        <% } %>
+                    </div>
+                </div>
+        </div>
+    

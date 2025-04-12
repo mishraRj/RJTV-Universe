@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RJTV: Watch & Explore in Style</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=Protest+Guerrilla&display=swap" rel="stylesheet">
+
+    <!-- Swiperjs.com CSS link-->
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=Protest+Guerrilla&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="/css/mySpace/game.css">
+    <link rel="stylesheet" href="/css/homePage/style.css">
+    <link rel="stylesheet" href="/css/popUp.css">
+    <link rel="stylesheet" href="/css/homePage/slider.css">
+    <link rel="stylesheet" href= "/css/includes/navBarStyle.css">
+    <link rel="stylesheet" href="/css/homePage/trailerStyle.css">
+    <link rel="stylesheet" href= "/css/includes/footer.css">
+    <link rel="stylesheet" href="/css/channels/RJTVstyle.css">
+    <link rel="stylesheet" href="/css/user/user.css">
+    
+    <link rel="stylesheet" href="/css/mySpace/mySpace.css">
+    <link rel="stylesheet" href="/css/mySpace/themes.css">
+<!-- Favicon for the website (logo) -->
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/mishraRj/rjtv-trailers/General%20Data/logo.png">
+</head>
+<body>
+    <audio id="successSound" src="https://cdn.jsdelivr.net/gh/mishraRj/rjtv-trailers/General%20Data/success.mp3"></audio>
+    <audio id="errorSound" src="https://cdn.jsdelivr.net/gh/mishraRj/rjtv-trailers/General%20Data/err.mp3"></audio>
+    <%- include("../includes/flash.ejs") %>
+    <%- include("../includes/signUp.ejs") %>
+        <%- include("../includes/login.ejs") %>
+        <%- include("../includes/navBar.ejs") %>
+        <%- body %>
+
+        <%- include("../includes/footer.ejs") %>
+<% if (showSignUpPopup) { %>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            document.querySelector(".login-wrapper").style.display = "none";
+            document.querySelector(".signup-wrapper").style.display = "flex";
+        });
+    </script>
+<% } else if (!currUser && showLoginPopup) { %>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            document.querySelector(".signup-wrapper").style.display = "none";
+            document.querySelector(".login-wrapper").style.display = "flex";
+        });
+    </script>
+<% } %>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="/js/boilerplateJS/slider.js"></script>
+<script src="/js/boilerplateJS/historySlider.js"></script>
+<script src="/js/btstrapValidation.js"></script>
+<script src="/js/closePopup.js"></script>
+<script src="/js/spaceShipBoilerJS/game.js"></script>
+<script src="/js/boilerplateJS/personalization.js"></script>
+<script src="/js/spaceShipBoilerJS/avatarValidation.js"></script>
+</body>
+</html>

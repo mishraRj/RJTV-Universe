@@ -1,0 +1,21 @@
+<% layout("/layouts/playerBoilerplate") %>
+    <a href="javascript:history.back()" class="back-arrow">🡠</a>
+
+    <div class="plyr__video-embed" id="player">
+        <!-- Custom Loader -->
+        <div class="spinner" id="custom-loader">
+            <div class="signal-wave wave1"></div>
+            <div class="signal-wave wave2"></div>
+            <div class="signal-wave wave3"></div>
+            <img 
+                src="https://cdn.jsdelivr.net/gh/mishraRj/rjtv-trailers/General%20Data/loader.png" 
+                alt="">
+            </div>
+        <iframe
+            id="youtubePlayer"
+            src="<%= movie.watch %>?autoplay=1&mute=1&origin=*" 
+            allow="autoplay; encrypted-media"
+            allowfullscreen
+            allowtransparency
+        ></iframe>
+    </div>

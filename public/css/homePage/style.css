@@ -1,0 +1,786 @@
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    /* Add this to your main CSS file */
+    .fade {
+        opacity: 0;
+        transition: opacity 0.5s ease-in-out;
+    }
+
+    .fade-in {
+        opacity: 1;
+    }
+
+    html, body {
+        width: 100%;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        font-family: 'Orbitron', sans-serif;
+        scroll-behavior: smooth;
+    }
+
+    .lazy-item {
+        opacity: 0;
+        transform: translateY(40px);
+        transition: opacity 1s ease-out, transform 0.6s ease-out;
+    }
+
+    .lazy-item.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    /* Main Box */
+    .main-content {
+        flex: 1;
+        min-height: 70vh; /* Ensures content has enough height */
+        background-color: #121212;
+        transition: background-image 8s ease-in-out;
+    }
+
+    .banner {
+        height: 40%; /* Allow height to adjust based on content */
+        width: 100%; /* Base width for larger screens */
+        max-width: 1080px; /* Maximum width of the banner */
+        min-height: 10%;
+        margin: 16px auto; /* Center the banner */
+        display: flex; /* Use flexbox to arrange children horizontally */
+        flex-wrap: wrap;
+        flex-direction: row;
+        background: rgba(0, 0, 0, 0.7);
+        position: relative;
+        left: 80px;
+        border-radius: 50px;
+        box-shadow: 
+            5px 5px 20px cyan,   /* Right & Bottom glow */
+            10px 10px 60px rgba(0, 255, 255, 0.3); /* Stronger spread on right & bottom */
+        z-index: 500;
+        overflow: hidden; /* Prevent overflow of video */
+    }
+
+    .video-banner {
+        flex: 1;
+        height: 100%; /* Maintain aspect ratio */
+        width: 50%; /* Use a percentage for responsiveness */
+        background-size: cover; /* Cover to fill the area */
+        background-position: center; /* Center the image */
+        border-top-left-radius: 20%;
+        border-bottom-right-radius: 20%;
+        animation: pulse-glow 2s infinite alternate;
+    }
+
+    .video-banner img{
+        flex: 1;
+        width: 100%;
+        height: 100%;
+        border-radius: 15px;
+    }
+
+    @keyframes pulse-glow {
+        0% {
+            box-shadow: 0 0 10px #39ff14, 0 0 15px #8a2be2, 0 0 20px #00ffff;
+            background-color: #1a0033;
+            border-color: #39ff14;
+        }
+        50% {
+            box-shadow: 0 0 20px #00ffff, 0 0 30px #8a2be2, 0 0 40px #39ff14;
+            background-color: #330066;
+            border-color: #00ffff;
+        }
+        100% {
+            box-shadow: 0 0 15px #8a2be2, 0 0 25px #00ffff, 0 0 35px #39ff14;
+            background-color: #1a0033;
+            border-color: #8a2be2;
+        }
+    }
+
+    .banner-text {
+        height: 100%; /* Allow height to adjust based on content */
+        width: 50%; /* Use a percentage for responsiveness */
+        padding-left: 20px; /* Add padding for text */
+        display: flex; /* Flexbox for inner content */
+        justify-content: center; /* Center contents horizontally */
+        align-items: center; /* Center contents vertically */
+        flex-direction: column; /* Stack text vertically */
+        color: white; /* Text color */
+    }
+
+    .banner-text .upgrade {
+        width: 100%; /* Full width */
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        color: white;
+        font-size: 2rem;
+        animation: text-glow 2s infinite alternate;
+        padding: 10px; /* Add padding for smaller screens */
+    }
+
+    @keyframes text-glow {
+        0% {
+            text-shadow: 0 0 10px #00FF00, 0 0 20px #00FFFF;
+        }
+        100% {
+            text-shadow: 0 0 15px #00FFFF, 0 0 25px #00FF00;
+        }
+    }
+
+    .upgrade {
+        height: auto; /* Allow height to adjust */
+        width: 100%; /* Full width */
+    }
+
+    .upgrade-btn {
+        height: auto; /* Allow height to adjust */
+        width: 100%; /* Full width */
+    }
+
+    .rjtv-upgrade-btn {
+    font-family: 'Orbitron', sans-serif;
+    padding: 12px 28px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #00f5ff;
+    background: linear-gradient(145deg, #0a0a14, #10101a);
+    border: 2px solid #00eaff;
+    border-radius: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 0 10px rgba(0, 238, 255, 0.4), inset 0 0 5px rgba(0, 238, 255, 0.2);
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+    text-shadow: 0 0 6px rgba(0, 255, 255, 0.4);
+    }
+
+    .rjtv-upgrade-btn:hover {
+    background: linear-gradient(145deg, #10101a, #0a0a14);
+    box-shadow: 0 0 20px #00eaff, 0 0 35px #00ff9d;
+    border-color: #00ff9d;
+    color: #00ffcc;
+    transform: scale(1.03);
+    }
+
+    .plans-wrapper {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        padding: 20px;
+        z-index: 1000;
+    }
+
+    .plans-card {
+        background: rgba(12, 12, 25, 0.95);
+        border-radius: 16px;
+        border: 2px solid #00eaff;
+        box-shadow: 0 0 25px rgba(0, 255, 255, 0.4);
+        padding: 40px;
+        max-width: 1000px;
+        width: 100%;
+        animation: fadeIn 0.6s ease-in-out;
+    }
+
+    .plans-title {
+        text-align: center;
+        font-size: 2.5rem;
+        margin-bottom: 10px;
+        color: #00ffe5;
+        text-shadow: 0 0 10px #00fff7;
+    }
+
+    .plans-subtitle {
+        text-align: center;
+        font-size: 1.2rem;
+        margin-bottom: 30px;
+        color: #80ffff;
+    }
+
+    .plans-table {
+        width: 100%;
+        border-collapse: collapse;
+        background-color: transparent;
+        
+    }
+
+    .plans-table th, .plans-table td {
+        border: 1px solid #00eaff;
+        padding: 15px;
+        text-align: left;
+        vertical-align: top;
+    }
+
+    .plans-table th {
+        background-color: rgba(0, 255, 255, 0.1);
+        color: #00f7ff;
+        text-shadow: 0 0 5px cyan;
+    }
+
+    .plans-table td ul {
+        padding-left: 20px;
+        margin: 0;
+    }
+
+    .rjtv-buy-btn {
+        background: linear-gradient(to right, #00eaff, #00ff9d);
+        border: 2px solid #00ffc3;
+        color: #000;
+        padding: 10px 20px;
+        font-weight: bold;
+        border-radius: 10px;
+        cursor: pointer;
+        box-shadow: 0 0 15px rgba(0, 255, 255, 0.6);
+        transition: 0.3s ease;
+    }
+
+    .rjtv-buy-btn:hover {
+        background: linear-gradient(to right, #00ff9d, #00eaff);
+        box-shadow: 0 0 25px rgba(0, 255, 255, 0.9);
+    }
+
+    .plans-table td ul li {
+    color: #aefeff;
+    margin-bottom: 6px;
+    list-style-type: '🛸';
+    text-shadow: 0 0 4px #00f7ff;
+    }
+
+    .plans-table td {
+    color: #aefeff;
+    margin-bottom: 6px;
+    list-style-type: '🛸';
+    text-shadow: 0 0 4px #00f7ff;
+    }
+    .plan-btn {
+    padding: 10px 20px;
+    font-size: 1rem;
+    border: 2px solid #00eaff;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #00eaff, #00ff9d);
+    color: #000;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    }
+
+    .plan-btn:hover {
+    background: linear-gradient(135deg, #00ff9d, #00eaff);
+    box-shadow: 0 0 15px #00ffff;
+    }
+
+    .plan-btn.purchased {
+    background: linear-gradient(135deg, #1f1f1f, #333);
+    border-color: #888;
+    color: #0ff;
+    cursor: not-allowed;
+    box-shadow: none;
+    }
+
+    .terms-wrapper {
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        background: rgba(10, 10, 20, 0.9);
+        border: 2px solid #00eaff;
+        border-radius: 20px;
+        box-shadow: 0 0 30px rgba(0, 255, 255, 0.4);
+        width: 85%;
+        max-width: 1200px;
+        margin: 60px auto;
+        overflow: hidden;
+        animation: fadeIn 0.5s ease-in-out;
+        z-index: 1000;
+    }
+
+    .terms-image-side {
+        flex: 1;
+        background-color: #0a0a1a;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 30px;
+    }
+
+    .terms-site-image {
+        max-width: 100%;
+        height: auto;
+        border-radius: 20px;
+        box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+    }
+
+    .terms-content {
+        flex: 2;
+        padding: 40px;
+        color: #00eaff;
+        font-family: 'Orbitron', sans-serif;
+    }
+
+    .terms-title {
+        font-size: 2rem;
+        margin-bottom: 20px;
+        text-shadow: 0 0 8px #00eaff;
+        border-bottom: 2px solid #00eaff;
+        padding-bottom: 10px;
+    }
+
+    .terms-list {
+        list-style-type: "🛸 ";
+        padding-left: 20px;
+    }
+
+    .terms-list li {
+        font-size: 1rem;
+        margin-bottom: 15px;
+        color: #00eaff;
+        line-height: 1.6;
+    }
+    .aboutUs-img{
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        border-right: 1px solid wheat;
+    }
+    .site-pic2 {
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    }
+
+    .site-pic2 img:first-child {
+    width: 100%;
+    border-radius: 20px;
+    box-shadow: 0 0 25px rgba(0, 255, 255, 0.5);
+    }
+
+    .creator-pic {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    }
+
+    .creator-pic img {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    border: 3px solid #00eaff;
+    box-shadow: 0 0 15px #00eaff;
+    transition: all 0.3s ease;
+    }
+
+    /* Contact Form */
+    .contact-wrapper {
+        position: relative;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        margin: 40px auto;
+        max-width: 1000px;
+        background: rgba(10, 10, 25, 0.95);
+        border-radius: 15px;
+        border: 2px solid #00eaff;
+        box-shadow: 0 0 20px rgba(0, 255, 255, 0.4);
+        padding: 20px;
+        animation: fadeIn 0.4s ease-in-out;
+        z-index: 100;
+    }
+    .contact-form input::placeholder,
+    .contact-form textarea::placeholder {
+    color: #00eaff;
+    opacity: 0.7;
+    font-size: 0.95rem;
+    }
+
+    .site-pic {
+    width: 40%;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    }
+
+    .site-pic img {
+    width: 100%;
+    max-width: 300px;
+    border-radius: 20px;
+    box-shadow: 0px 0px 20px rgba(0, 255, 255, 0.6);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    }
+
+    .site-pic img:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 0px 30px rgba(0, 255, 255, 0.8);
+    }
+
+    .contact-container {
+    width: 60%;
+    padding: 30px;
+    color: #00eaff;
+    font-family: "Orbitron", sans-serif;
+    }
+
+    .contact-heading {
+    font-size: 1.8rem;
+    font-weight: bold;
+    text-shadow: 0 0 10px #00eaff;
+    margin-bottom: 10px;
+    text-align: center;
+    }
+
+    .contact-intro {
+    text-align: center;
+    font-size: 1rem;
+    margin-bottom: 20px;
+    color: #ccc;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+    background: rgba(255, 255, 255, 0.05);
+    color: #00eaff;
+    border: none;
+    border-radius: 8px;
+    padding: 12px;
+    font-size: 1rem;
+    transition: box-shadow 0.3s ease;
+    }
+
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+    box-shadow: 0 0 10px #00eaff;
+    border: 1px solid #00eaff;
+    }
+
+    .contact-btn {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    color: black;
+    font-weight: bold;
+    background: linear-gradient(to right, #00eaff, #00ff9d);
+    cursor: pointer;
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.6);
+    transition: 0.3s ease-in-out;
+    }
+
+    .contact-btn:hover {
+    background: linear-gradient(to right, #00ff9d, #00eaff);
+    box-shadow: 0 0 25px rgba(0, 255, 255, 0.9);
+    }
+
+    .send-btn {
+    background: linear-gradient(to right, #00eaff, #00ff9d);
+    border: none;
+    padding: 12px 20px;
+    color: black;
+    font-weight: bold;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.6);
+    transition: all 0.3s ease;
+    width: 100%;
+    }
+
+    .send-btn:hover {
+    background: linear-gradient(to right, #00ff9d, #00eaff);
+    box-shadow: 0 0 25px rgba(0, 255, 255, 1);
+    }
+
+
+    @media screen and (max-width: 768px) {
+    .contact-wrapper {
+        flex-direction: column;
+        padding: 20px;
+    }
+
+    .site-pic,
+    .contact-container {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .contact-heading {
+        font-size: 1.5rem;
+    }
+    }
+
+
+    /* Medium screens (tablets) */
+    @media (max-width: 768px) {
+    .creator-pic img {
+        width: 220px;
+        height: 220px;
+    }
+    }
+
+    /* Small screens (phones) */
+    @media (max-width: 480px) {
+    .creator-pic img {
+        width: 160px;
+        height: 160px;
+    }
+    }
+
+
+    @media (max-width: 768px) {
+        .terms-wrapper {
+            flex-direction: column;
+        }
+
+        .terms-image-side {
+            padding: 20px;
+        }
+
+        .terms-content {
+            padding: 30px 20px;
+        }
+    }
+
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(30px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 755px) {
+
+        .banner{
+            left: 10px;
+            border-radius: 25px;
+        }
+        
+        .banner-text .upgrade {
+            font-size: 1.5rem;
+            animation: text-glow 2s infinite alternate;
+            padding: 5px; /* Add padding for smaller screens */
+        }
+
+        .upgrade-btn button {
+            padding: 5px 5px;
+            font-size: 14px;
+            font-weight: bold;
+            border-radius: 30px;
+            width: 50%;
+            max-width: 200px;
+        }
+    }
+
+    @media (max-width: 568px) {
+
+        .banner{
+            left: 10px;
+            border-radius: 25px;
+        }
+        
+        .banner-text .upgrade {
+            font-size: 1rem;
+            animation: text-glow 2s infinite alternate;
+            padding: 5px; /* Add padding for smaller screens */
+        }
+
+        .upgrade-btn button {
+            padding: 3px 3px;
+            font-size: 12px;
+            font-weight: bold;
+            border-radius: 30px;
+            width: 50%;
+            max-width: 200px;
+        }
+    }
+
+    @media (max-width: 468px) {
+        .banner{
+            left: 10px;
+            border-radius: 25px;
+        }
+        
+        .banner-text .upgrade {
+            font-size: 0.8rem;
+            animation: text-glow 2s infinite alternate;
+            padding: 5px; /* Add padding for smaller screens */
+        }
+
+        .upgrade-btn button {
+            padding: 3px 3px;
+            font-size: 12px;
+            font-weight: bold;
+            border-radius: 30px;
+            width: 50%;
+            max-width: 200px;
+        }
+    }
+
+    @media (max-width: 380px) {
+
+        .banner{
+            left: 10px;
+            border-radius: 25px;
+        }
+        
+        .banner-text .upgrade {
+            font-size: 0.5rem;
+            animation: text-glow 2s infinite alternate;
+            padding: 5px; /* Add padding for smaller screens */
+        }
+
+        .upgrade-btn button {
+            padding: 2px 2px;
+            font-size: 10px;
+            font-weight: bold;
+            border-radius: 30px;
+            width: 50%;
+            max-width: 200px;
+        }
+    }
+
+    @keyframes text-glow2 {
+        0% {
+            text-shadow: 0 0 10px #1E90FF, 0 0 20px #00BFFF;
+        }
+        100% {
+            text-shadow: 0 0 15px #00BFFF, 0 0 25px #1E90FF;
+        }
+    }
+
+    /* Responsive Fix */
+    @media (max-width: 1024px) {
+        .result {
+            flex-direction: column;
+            width: 90%;
+            height: auto;
+            left: 20px;
+            top: 30px;
+        }
+
+        .result-poster {
+            width: 100%;
+            height: 40vh;
+        }
+
+        .result-info {
+            width: 100%;
+            padding: 20px;
+        }
+    }
+
+    @media (max-width: 480px){
+        .banner {
+        box-shadow: 
+            2px 2px 5px cyan,   /* Right & Bottom glow */
+            6px 6px 10px rgba(0, 255, 255, 0.3); /* Stronger spread on right & bottom */
+    }
+
+    .video-banner {
+        animation: none;
+    }
+    }
+
+    /* Plans Responsive*/
+    @media (max-width: 1024px) {
+    .plans-card {
+        padding: 30px;
+    }
+
+    .plans-title {
+        font-size: 2rem;
+    }
+
+    .plans-subtitle {
+        font-size: 1rem;
+    }
+
+    .plan-btn {
+        padding: 8px 16px;
+        font-size: 0.95rem;
+    }
+    }
+
+    @media (max-width: 768px) {
+    .plans-wrapper {
+        height: auto;
+        padding: 40px 20px;
+    }
+
+    .plans-card {
+        padding: 25px;
+    }
+
+    .plans-title {
+        font-size: 1.8rem;
+    }
+
+    .plans-subtitle {
+        font-size: 0.95rem;
+    }
+
+    .plans-table th,
+    .plans-table td {
+        padding: 10px;
+        font-size: 0.95rem;
+    }
+
+    .plan-btn {
+        width: 100%;
+        font-size: 0.9rem;
+    }
+
+    .plans-table td ul {
+        padding-left: 15px;
+    }
+    }
+
+    @media (max-width: 480px) {
+    .plans-title {
+        font-size: 1.5rem;
+    }
+
+    .plans-subtitle {
+        font-size: 0.9rem;
+        margin-bottom: 20px;
+    }
+
+    .plans-card {
+        padding: 20px;
+    }
+
+    .plans-table thead {
+        display: none;
+    }
+
+    .plans-table, .plans-table tbody, .plans-table tr, .plans-table td {
+        display: block;
+        width: 100%;
+    }
+
+    .plans-table tr {
+        margin-bottom: 30px;
+        border-bottom: 2px solid rgba(0, 255, 255, 0.3);
+    }
+
+    .plans-table td {
+        padding: 10px 0;
+        font-size: 0.9rem;
+        position: relative;
+    }
+
+    .plans-table td:before {
+        content: attr(data-label);
+        font-weight: bold;
+        color: #00eaff;
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    .plan-btn {
+        font-size: 0.85rem;
+        padding: 10px;
+    }
+    }

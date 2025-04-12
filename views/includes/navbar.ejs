@@ -1,0 +1,46 @@
+
+    <input type="checkbox" id="check" />
+            <div class="btn_one">
+                <label for="check">
+                <i class="fa-solid fa-bars" style="z-index: 100000;"></i>
+                </label>
+            </div>
+        <div class="nav-bar">
+            <div class="subscription">
+                <h3>RJTV UNIVERSE</h3>
+                
+                <div class="btn_two">
+                    <label for="check" style="color: grey">
+                        <i class="fa-solid fa-xmark"></i>
+                        </label>
+                    </div>
+            </div>
+            <div class="menu">
+                <ul>
+                    <li>
+                        <img src="https://cdn.jsdelivr.net/gh/mishraRj/rjtv-trailers/General%20Data/SpaceshioIcon.png" alt="img">
+                        <a href="http://localhost:3000/mySpace" style="animation: text-glow 2s infinite alternate;">Spaceship</a>
+                    </li>
+                    <li>
+                        <i class="fas fa-home""></i>
+                        <a href="http://localhost:3000/home_page">Home</a>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <a href="http://localhost:3000/explore">Search</a>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-tv"></i>
+                        <a href="http://localhost:3000/categories/<%= rjtvShows._id %>-<%= rjtvShows.channelId %>">TV</a>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-clapperboard"></i>
+                        <a href="http://localhost:3000/movies">Movies</a>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-layer-group"></i>
+                        <a href="http://localhost:3000/categories">Categories</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
