@@ -5,7 +5,7 @@ const comingSoon = [
         watch: "",
         genre: ["Action", "Sci-fi"],
         language: ["Hindi", "English"],
-        channel: "HollywoodPlanet",
+        channel: "Movie",
         type: "movie", // Movie, Series, Anime !?
         homeShow: true,
         description: "Superman embarks on a journey to reconcile his Kryptonian heritage with his human upbringing as Clark Kent.",
@@ -23,7 +23,7 @@ const comingSoon = [
         watch: "",
         genre: ["Action", "Sci-fi"],
         language: ["Hindi", "English"],
-        channel: "HollywoodPlanet",
+        channel: "Movie",
         type: "movie", // Movie, Series, Anime !?
         homeShow: true,
         description: "An upcoming American epic science fiction film a sequel to Avatar franchise.",
@@ -41,7 +41,7 @@ const comingSoon = [
         watch: "",
         genre: ["Fantasy", "Action"],
         language: ["Hindi", "English"],
-        channel: "HollywoodPlanet",
+        channel: "Movie",
         type: "movie", // Movie, Series, Anime !?
         homeShow: true,
         description: "As an ancient threat endangers both Vikings and dragons alike on the isle of Berk, the friendship between Hiccup, an inventive Viking, and Toothless, a Night Fury dragon, becomes the key to both species forging a new future together.",
@@ -59,7 +59,7 @@ const comingSoon = [
         watch: "",
         genre: ["Action", "Fantasy"],
         language: ["Hindi", "English"],
-        channel: "MarvelPlanet",
+        channel: "Movie",
         type: "movie", // Movie, Series, Anime !?
         homeShow: true,
         description: "A group of supervillains are recruited to go on missions for the government.",
@@ -77,7 +77,7 @@ const comingSoon = [
         watch: "",
         genre: ["Action", "Fantasy"],
         language: ["Hindi", "English"],
-        channel: "MarvelPlanet",
+        channel: "Movie",
         type: "movie", // Movie, Series, Anime !?
         homeShow: true,
         description: "Marvel's First Family face their most daunting challenge yet. Forced to balance their roles as heroes with the strength of their family bond, they must defend Earth from a ravenous space god called Galactus and his herald, Silver Surfer.",
@@ -95,7 +95,7 @@ const comingSoon = [
         watch: "",
         genre: ["Comedy", "Thriller"],
         language: ["Hindi", "English", "Japaneese"],
-        channel: "AnimePlanet",
+        channel: "Movie",
         type: "movie", // Movie, Series, Anime !?
         homeShow: true,
         description: "The Demon Slayer Corps plunge into Infinity Castle to defeat Muzan. However, the remaining Hashira and the Demon Slayers who survived Tanjiro's Final Selection are pitted against the last of the Twelve Kizuki first.",
@@ -113,7 +113,7 @@ const comingSoon = [
         watch: "",
         genre: ["Comedy", "Thriller"],
         language: ["Hindi"],
-        channel: "BollywoodPlanet",
+        channel: "Movie",
         type: "movie", // Movie, Series, Anime !?
         homeShow: true,
         description: "Police officers Jay Bakshi and Sandhya have been given task to track down notorious criminal Raj Solanki. Things take an unexpected turn when JaY finds out that Raj plays a significant role in his life.",

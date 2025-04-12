@@ -13,6 +13,8 @@ const Review = require('../models/review.js')
 
 const getCollectionData = async (collectionName, query = {}) => {
     switch (collectionName) {
+        case "Movie":
+            return Movie.find(query);
         case "AnimePlanet":
             return AnimePlanet.find(query);
         case "MarvelPlanet":
