@@ -55,7 +55,7 @@ if (currentURL.includes('/mySpace') || currentURL.includes('/edit-profile')) {
     });
 }
 
-if (currentURL === 'http://localhost:3000/categories') {
+if (currentURL === 'https://rjtv-universe.up.railway.app/categories') {
     spaceshipCount = 6; // Limit to 6 spaceships on these pages
     let stars = document.querySelectorAll('.star');
     stars.forEach(star => {
