@@ -23,7 +23,7 @@
                     <!-- Buttons Section -->
                     <% if(movie.movieClass !== "comingSoon") {%>
                         <div class="buttons">
-                            <a href="http://localhost:3000/home_page/<%= movie.id %>-<%= movie.title %>/player"><button  class="watch-btn">▶ Watch Now</button></a>
+                            <a href="/home_page/<%= movie.id %>-<%= movie.title %>/player"><button  class="watch-btn">▶ Watch Now</button></a>
                             <%
                                 const inWatchLater = currUser && currUser.watchLater.some(item =>
                                     item.movieId.toString() === movie._id.toString() &&

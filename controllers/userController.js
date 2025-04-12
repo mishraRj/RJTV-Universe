@@ -158,7 +158,7 @@ module.exports.watchLater = async (req, res) => {
 }
 
 module.exports.fav = async (req, res) => {
-    const referer = req.get('Referer'); // full URL (e.g., http://localhost:3000/mySpace)
+    const referer = req.get('Referer'); // full URL (e.g., /mySpace)
     const redirectUrl = req.session.redirectUrl || referer || "/home_page";
     const { movieId, sourceCollection, movieTitle } = req.body;
     try {
