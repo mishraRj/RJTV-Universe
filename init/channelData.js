@@ -114,7 +114,7 @@ const channels = [
         planet: "https://cdn.jsdelivr.net/gh/mishraRj/rjtv-trailers/channels/BP.png",
         card: [
             "https://res.cloudinary.com/dfeejwrim/image/upload/v1744094883/Stree_2_dxxn7a_sjsdtt.webp",
-            "https://res.cloudinary.com/dzagwvljs/image/upload/v1744106777/Chaava_mw446n_q7ix33.webp",
+            "https://res.cloudinary.com/dgzelkbmu/image/upload/v1744431126/chhava_fl3xjj.webp",
             "https://res.cloudinary.com/dber1ydc9/image/upload/v1744260538/a_98_ykpw1s.webp", // 3 idiots
             "https://res.cloudinary.com/dber1ydc9/image/upload/v1744260537/a_94_rbyy84.webp", // animal
             "https://res.cloudinary.com/dber1ydc9/image/upload/v1744260536/a_92_g0jml0.webp", // bahubali
