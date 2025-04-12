@@ -23,25 +23,6 @@ require("./config/passportGoogle.js"); // Load Google Auth Strategy
 const app = express();
 const port = 3000;
 const dbUrl = process.env.ATLASDB_URL;
-//basic connection code of mongoose
-async function main() {
-    await mongoose.connect(dbUrl);
-    console.log("✅ Connected to DB");
-}
-
-// ✅ Call the `main` function
-main().catch((err) => {
-    console.log("❌ MongoDB Connection Error:", err);
-});
-
-app.engine("ejs", ejsMate);
-app.set("view engine", "ejs");
-app.set("views", path.join(__dirname, "views"));
-// ✨ Middleware to parse JSON bodies
-app.use(express.json());
-app.use(express.static(path.join(__dirname, "public")));
-app.use(express.urlencoded({ extended: true }));
-app.use(methodOverride("_method"));
 
 const store = MongoStore.create({
     mongoUrl: dbUrl,
@@ -67,12 +48,33 @@ const sessionOptions = {
     }
 }
 
+app.use(session(sessionOptions));
+app.use(flash());
+
+//basic connection code of mongoose
+async function main() {
+    await mongoose.connect(dbUrl);
+    console.log("✅ Connected to DB");
+}
+
+// ✅ Call the `main` function
+main().catch((err) => {
+    console.log("❌ MongoDB Connection Error:", err);
+});
+
+app.engine("ejs", ejsMate);
+app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "views"));
+// ✨ Middleware to parse JSON bodies
+app.use(express.json());
+app.use(express.static(path.join(__dirname, "public")));
+app.use(express.urlencoded({ extended: true }));
+app.use(methodOverride("_method"));
+
 app.get("/", (req, res) => {
     res.redirect("/home_page");
 });
 
-app.use(session(sessionOptions));
-app.use(flash());
 
 app.use(passport.initialize());
 app.use(passport.session());
