@@ -5,6 +5,7 @@ if (window.innerWidth > 450) {
     document.addEventListener("DOMContentLoaded", function () {
     const horrorPage = document.body.classList.contains('horror-bg');
     const backgroundAudio = document.getElementById('HorrorTransitionAudio');
+    const backgroundHowlAudio = document.getElementById('HorrorHowlAudio');
     let horrorModeActive = localStorage.getItem("horrorModeActive");
     const themeUrl = document.body.dataset.themeurl;
 
@@ -34,7 +35,6 @@ if (window.innerWidth > 450) {
             if (!backgroundAudio.dataset.played) {
                 backgroundAudio.play().then(() => {
                     backgroundAudio.dataset.played = "true";
-                    console.log("✅ Horror audio played once!");
                 }).catch(error => {
                     console.error("❌ Audio play blocked:", error);
                 });
@@ -57,8 +57,11 @@ if (window.innerWidth > 450) {
             }, 800);
             localStorage.setItem("horrorModeActive", "true");
         } else {
-            // 🔁 Already active, set things instantly
-            console.log("🎭 Horror mode already active, setting dark universe instantly.");
+            backgroundHowlAudio.loop = false;
+            backgroundHowlAudio.play();
+            setInterval(() => {
+                backgroundHowlAudio.play();
+            }, 45000);
 
             document.body.style.transition = "none";
             document.querySelector('.main-content').style.transition = "none";
@@ -97,7 +100,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const tooltip = wrapper.querySelector('.fav-tooltip');
 
     heartIcon.addEventListener('click', async () => {
-        console.log('Heart clicked!');
         const movieId = wrapper.dataset.id;
         const sourceCollection = wrapper.dataset.collection;
 
