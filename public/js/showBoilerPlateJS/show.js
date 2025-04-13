@@ -3,58 +3,48 @@ let spaceShip = document.querySelector('.projector');
 
 if (window.innerWidth > 450) {
     document.addEventListener("DOMContentLoaded", function () {
-        const horrorPage = document.body.classList.contains('horror-bg');
-        const backgroundAudio = document.getElementById('HorrorTransitionAudio');
-        const horrorModeActive = localStorage.getItem("horrorModeActive"); // 🔥 Track if horror mode was active
+    const horrorPage = document.body.classList.contains('horror-bg');
+    const backgroundAudio = document.getElementById('HorrorTransitionAudio');
+    let horrorModeActive = localStorage.getItem("horrorModeActive");
+    const themeUrl = document.body.dataset.themeurl;
 
-        if (horrorPage) {
-            if (!horrorModeActive) { // 🛑 First time horror mode is activated
-                backgroundAudio.loop = false;
-
-                if (!backgroundAudio.dataset.played) {
-                    backgroundAudio.play().then(() => {
-                        backgroundAudio.dataset.played = "true";
-                        console.log("✅ Horror audio played once!");
-                    }).catch(error => {
-                        console.error("❌ Audio play blocked:", error);
-                    });
-                }
-
-                setTimeout(() => {
-                    document.body.classList.add('delayed-bg');
-                    document.querySelector('.main-content').classList.add('delayed-bg');
-
-                    // 🚀 Hide spaceships
-                    const spaceShips = document.querySelectorAll('.spaceShip');
-                    spaceShips.forEach(spaceShip => {
-                        spaceShip.classList.add('hidden');
-                        setTimeout(() => {
-                            spaceShip.style.display = "none";
-                        }, 1500);
-                    });
-
-                    setTimeout(showLoader, 8); // 👻 Spawn ghosts
-                }, 800);
-
-                // ✅ Mark horror mode as active
+    // 🎯 Themes that force horrorMode ONLY IF horror-bg class is also present
+    const forcedHorrorThemes = [
+        'https://cdn.jsdelivr.net/gh/mishraRj/rjtv-trailers/Themes/new1.webp',
+        'https://cdn.jsdelivr.net/gh/mishraRj/rjtv-trailers/Themes/new2.webp',
+        'https://cdn.jsdelivr.net/gh/mishraRj/rjtv-trailers/Themes/new3.webp',
+        'https://cdn.jsdelivr.net/gh/mishraRj/rjtv-trailers/Themes/new4.webp',
+        'https://cdn.jsdelivr.net/gh/mishraRj/rjtv-trailers/Themes/newGreen1.webp',
+        'https://cdn.jsdelivr.net/gh/mishraRj/rjtv-trailers/Themes/newGreen2.webp',
+        'https://cdn.jsdelivr.net/gh/mishraRj/rjtv-trailers/Themes/bluePlanets.webp'
+    ];
+    
+    const isForcedHorror = forcedHorrorThemes.includes(themeUrl);
+// ✅ Mark horrorMode active only if theme is in list OR normal horror page
+            if (isForcedHorror) {
                 localStorage.setItem("horrorModeActive", "true");
+                horrorModeActive = "true"; // 👈 Ye line zaroori hai!
+            }
+    // ✅ Horror mode logic applies only if body has horror-bg
+    if (horrorPage) {
+        // ✅ First time activation (horrorModeActive not set)
+        if (!horrorModeActive) {
+            backgroundAudio.loop = false;
 
-            } else {
-                console.log("🎭 Horror mode already active, setting dark universe instantly.");
-            
-                // 🔥 Directly set the dark-universe background without transition
-                document.body.style.transition = "none";
-                document.querySelector('.main-content').style.transition = "none";
+            if (!backgroundAudio.dataset.played) {
+                backgroundAudio.play().then(() => {
+                    backgroundAudio.dataset.played = "true";
+                    console.log("✅ Horror audio played once!");
+                }).catch(error => {
+                    console.error("❌ Audio play blocked:", error);
+                });
+            }
 
+            setTimeout(() => {
                 document.body.classList.add('delayed-bg');
                 document.querySelector('.main-content').classList.add('delayed-bg');
 
-                setTimeout(() => {
-                    document.body.style.transition = "";
-                    document.querySelector('.main-content').style.transition = "";
-                }, 1);
-
-                // 🚀 Always hide spaceships in horror mode
+                // 🚀 Hide spaceships
                 const spaceShips = document.querySelectorAll('.spaceShip');
                 spaceShips.forEach(spaceShip => {
                     spaceShip.classList.add('hidden');
@@ -63,14 +53,41 @@ if (window.innerWidth > 450) {
                     }, 1500);
                 });
 
-                // 👻 Ensure ghosts are present even in horror-to-horror transitions
-                setTimeout(showLoader, 1);
-            }
-
+                setTimeout(showLoader, 8); // 👻 Spawn ghosts
+            }, 800);
+            localStorage.setItem("horrorModeActive", "true");
         } else {
-            localStorage.removeItem("horrorModeActive"); // Reset if switching to non-horror movie
+            // 🔁 Already active, set things instantly
+            console.log("🎭 Horror mode already active, setting dark universe instantly.");
+
+            document.body.style.transition = "none";
+            document.querySelector('.main-content').style.transition = "none";
+
+            document.body.classList.add('delayed-bg');
+            document.querySelector('.main-content').classList.add('delayed-bg');
+
+            setTimeout(() => {
+                document.body.style.transition = "";
+                document.querySelector('.main-content').style.transition = "";
+            }, 1);
+
+            // 🚀 Hide spaceships always in horror mode
+            const spaceShips = document.querySelectorAll('.spaceShip');
+            spaceShips.forEach(spaceShip => {
+                spaceShip.classList.add('hidden');
+                setTimeout(() => {
+                    spaceShip.style.display = "none";
+                }, 1500);
+            });
+
+            setTimeout(showLoader, 1); // 👻
         }
-    });
+
+    } else {
+        // 🎯 Not a horror page, clear mode
+        localStorage.removeItem("horrorModeActive");
+    }
+});
 }
 document.addEventListener('DOMContentLoaded', () => {
     const wrapper = document.querySelector('.fav-wrapper');

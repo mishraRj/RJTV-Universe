@@ -46,19 +46,22 @@
     background-color: #121212;
     background-image: url('<%= themeUrl %>');; 
     overflow-x: hidden;
-    transition: background-image 6s ease-in; 
+    transition: background-image 5s ease-in; 
     background-size: initial;
     margin: 0;
 }
 
 body.horror-bg.delayed-bg, .main-content.horror-bg.delayed-bg {
-    background-image: url('https://cdn.jsdelivr.net/gh/mishraRj/rjtv-trailers/Themes/a%20(1).webp');
-    transition: background-image 6s ease-in; /* Smooth Transition */
+    background-image: url('https://cdn.jsdelivr.net/gh/mishraRj/rjtv-trailers/Themes/darknew.webp');
+    transition: background-image 5s ease-in; /* Smooth Transition */
     background-size: initial;
 }
 </style>
 
-<body class="<%= isHorror ? 'horror-bg' : '' %>">
+<body 
+  class="<%= isHorror ? 'horror-bg' : '' %>" 
+  data-themeurl="<%= themeUrl %>">
+
         <%- include("../includes/flash.ejs") %>
         <%- include("../includes/signup.ejs") %>
         <%- include("../includes/login.ejs") %>
