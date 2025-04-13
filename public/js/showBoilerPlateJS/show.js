@@ -1,76 +1,77 @@
 let alienVoice = document.getElementById('alienVoice');
 let spaceShip = document.querySelector('.projector');
 
-document.addEventListener("DOMContentLoaded", function () {
-    const horrorPage = document.body.classList.contains('horror-bg');
-    const backgroundAudio = document.getElementById('HorrorTransitionAudio');
-    const horrorModeActive = localStorage.getItem("horrorModeActive"); // 🔥 Track if horror mode was active
+if (window.innerWidth > 450) {
+    document.addEventListener("DOMContentLoaded", function () {
+        const horrorPage = document.body.classList.contains('horror-bg');
+        const backgroundAudio = document.getElementById('HorrorTransitionAudio');
+        const horrorModeActive = localStorage.getItem("horrorModeActive"); // 🔥 Track if horror mode was active
 
-    if (horrorPage) {
-        if (!horrorModeActive) { // 🛑 First time horror mode is activated
-            backgroundAudio.loop = false;
+        if (horrorPage) {
+            if (!horrorModeActive) { // 🛑 First time horror mode is activated
+                backgroundAudio.loop = false;
 
-            if (!backgroundAudio.dataset.played) {
-                backgroundAudio.play().then(() => {
-                    backgroundAudio.dataset.played = "true"; 
-                    console.log("✅ Horror audio played once!");
-                }).catch(error => {
-                    console.error("❌ Audio play blocked:", error);
-                });
-            }
+                if (!backgroundAudio.dataset.played) {
+                    backgroundAudio.play().then(() => {
+                        backgroundAudio.dataset.played = "true";
+                        console.log("✅ Horror audio played once!");
+                    }).catch(error => {
+                        console.error("❌ Audio play blocked:", error);
+                    });
+                }
 
-            setTimeout(() => {
+                setTimeout(() => {
+                    document.body.classList.add('delayed-bg');
+                    document.querySelector('.main-content').classList.add('delayed-bg');
+
+                    // 🚀 Hide spaceships
+                    const spaceShips = document.querySelectorAll('.spaceShip');
+                    spaceShips.forEach(spaceShip => {
+                        spaceShip.classList.add('hidden');
+                        setTimeout(() => {
+                            spaceShip.style.display = "none";
+                        }, 1500);
+                    });
+
+                    setTimeout(showLoader, 8); // 👻 Spawn ghosts
+                }, 800);
+
+                // ✅ Mark horror mode as active
+                localStorage.setItem("horrorModeActive", "true");
+
+            } else {
+                console.log("🎭 Horror mode already active, setting dark universe instantly.");
+            
+                // 🔥 Directly set the dark-universe background without transition
+                document.body.style.transition = "none";
+                document.querySelector('.main-content').style.transition = "none";
+
                 document.body.classList.add('delayed-bg');
                 document.querySelector('.main-content').classList.add('delayed-bg');
 
-                // 🚀 Hide spaceships
+                setTimeout(() => {
+                    document.body.style.transition = "";
+                    document.querySelector('.main-content').style.transition = "";
+                }, 1);
+
+                // 🚀 Always hide spaceships in horror mode
                 const spaceShips = document.querySelectorAll('.spaceShip');
                 spaceShips.forEach(spaceShip => {
-                    spaceShip.classList.add('hidden'); 
+                    spaceShip.classList.add('hidden');
                     setTimeout(() => {
-                        spaceShip.style.display = "none"; 
-                    }, 1500); 
+                        spaceShip.style.display = "none";
+                    }, 1500);
                 });
 
-                setTimeout(showLoader, 8); // 👻 Spawn ghosts
-            }, 800);
-
-            // ✅ Mark horror mode as active
-            localStorage.setItem("horrorModeActive", "true");
+                // 👻 Ensure ghosts are present even in horror-to-horror transitions
+                setTimeout(showLoader, 1);
+            }
 
         } else {
-            console.log("🎭 Horror mode already active, setting dark universe instantly.");
-            
-            // 🔥 Directly set the dark-universe background without transition
-            document.body.style.transition = "none"; 
-            document.querySelector('.main-content').style.transition = "none";
-
-            document.body.classList.add('delayed-bg');
-            document.querySelector('.main-content').classList.add('delayed-bg');
-
-            setTimeout(() => {
-                document.body.style.transition = ""; 
-                document.querySelector('.main-content').style.transition = "";
-            }, 1);
-
-            // 🚀 Always hide spaceships in horror mode
-            const spaceShips = document.querySelectorAll('.spaceShip');
-            spaceShips.forEach(spaceShip => {
-                spaceShip.classList.add('hidden'); 
-                setTimeout(() => {
-                    spaceShip.style.display = "none"; 
-                }, 1500);
-            });
-
-            // 👻 Ensure ghosts are present even in horror-to-horror transitions
-            setTimeout(showLoader, 1);
+            localStorage.removeItem("horrorModeActive"); // Reset if switching to non-horror movie
         }
-
-    } else {
-        localStorage.removeItem("horrorModeActive"); // Reset if switching to non-horror movie
-    }
-});
-
+    });
+}
 document.addEventListener('DOMContentLoaded', () => {
     const wrapper = document.querySelector('.fav-wrapper');
     if (!wrapper) return;
@@ -107,58 +108,58 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+if (window.innerWidth > 450) {
+    // 👻 Spawn Ghosts
+    function showLoader() {
+        // ❌ Remove any existing ghosts before spawning new ones
+        document.querySelectorAll('.ghost').forEach(ghost => ghost.remove());
 
-// 👻 Spawn Ghosts
-function showLoader() { 
-    // ❌ Remove any existing ghosts before spawning new ones
-    document.querySelectorAll('.ghost').forEach(ghost => ghost.remove());
+        const ghostImgs = [
+            "https://cdn.jsdelivr.net/gh/mishraRj/rjtv-trailers/ghosts/ghost(1).png",
+            "https://cdn.jsdelivr.net/gh/mishraRj/rjtv-trailers/ghosts/ghost(2).png",
+            "https://cdn.jsdelivr.net/gh/mishraRj/rjtv-trailers/ghosts/ghost(3).png",
+            "https://cdn.jsdelivr.net/gh/mishraRj/rjtv-trailers/ghosts/ghost(4).png",
+            "https://cdn.jsdelivr.net/gh/mishraRj/rjtv-trailers/ghosts/ghost(5).png",
+            "https://cdn.jsdelivr.net/gh/mishraRj/rjtv-trailers/ghosts/ghost(6).png",
+            "https://cdn.jsdelivr.net/gh/mishraRj/rjtv-trailers/ghosts/ghost(7).png",
+            "https://cdn.jsdelivr.net/gh/mishraRj/rjtv-trailers/ghosts/ghost(8).png",
+            "https://cdn.jsdelivr.net/gh/mishraRj/rjtv-trailers/ghosts/ghost(9).png",
+            "https://cdn.jsdelivr.net/gh/mishraRj/rjtv-trailers/ghosts/ghost(10).png",
+            "https://cdn.jsdelivr.net/gh/mishraRj/rjtv-trailers/ghosts/ghost(11).png",
+            "https://cdn.jsdelivr.net/gh/mishraRj/rjtv-trailers/ghosts/ghost(12).png"
+        ];
 
-    const ghostImgs = [
-        "https://cdn.jsdelivr.net/gh/mishraRj/rjtv-trailers/ghosts/ghost(1).png",
-        "https://cdn.jsdelivr.net/gh/mishraRj/rjtv-trailers/ghosts/ghost(2).png",
-        "https://cdn.jsdelivr.net/gh/mishraRj/rjtv-trailers/ghosts/ghost(3).png",
-        "https://cdn.jsdelivr.net/gh/mishraRj/rjtv-trailers/ghosts/ghost(4).png",
-        "https://cdn.jsdelivr.net/gh/mishraRj/rjtv-trailers/ghosts/ghost(5).png",
-        "https://cdn.jsdelivr.net/gh/mishraRj/rjtv-trailers/ghosts/ghost(6).png",
-        "https://cdn.jsdelivr.net/gh/mishraRj/rjtv-trailers/ghosts/ghost(7).png",
-        "https://cdn.jsdelivr.net/gh/mishraRj/rjtv-trailers/ghosts/ghost(8).png",
-        "https://cdn.jsdelivr.net/gh/mishraRj/rjtv-trailers/ghosts/ghost(9).png",
-        "https://cdn.jsdelivr.net/gh/mishraRj/rjtv-trailers/ghosts/ghost(10).png",
-        "https://cdn.jsdelivr.net/gh/mishraRj/rjtv-trailers/ghosts/ghost(11).png",
-        "https://cdn.jsdelivr.net/gh/mishraRj/rjtv-trailers/ghosts/ghost(12).png"
-    ];
+        const documentHeight = document.body.scrollHeight - 400;
 
-    const documentHeight = document.body.scrollHeight - 400;
-
-    for (let i = 0; i < ghostImgs.length; i++) {
-        let ghosts = document.createElement('div');
-        ghosts.classList.add('ghost'); 
+        for (let i = 0; i < ghostImgs.length; i++) {
+            let ghosts = document.createElement('div');
+            ghosts.classList.add('ghost');
         
-        ghosts.style.left = `${Math.random() * 100}vw`;
-        ghosts.style.zIndex = '5000'; 
-        ghosts.style.top = `${Math.random() * documentHeight}px`;
+            ghosts.style.left = `${Math.random() * 100}vw`;
+            ghosts.style.zIndex = '5000';
+            ghosts.style.top = `${Math.random() * documentHeight}px`;
 
-        let gImg = document.createElement('img');
-        gImg.src = ghostImgs[i % ghostImgs.length]; 
+            let gImg = document.createElement('img');
+            gImg.src = ghostImgs[i % ghostImgs.length];
 
-        const randomSize = Math.floor(Math.random() * 151) + 50; 
-        gImg.style.width = `${randomSize}px`;
-        gImg.style.height = `${randomSize}px`;
+            const randomSize = Math.floor(Math.random() * 151) + 50;
+            gImg.style.width = `${randomSize}px`;
+            gImg.style.height = `${randomSize}px`;
 
-        gImg.style.zIndex = "10";
-        gImg.style.opacity = "0";
-        gImg.style.transition = "opacity 1.5s ease-in-out";
+            gImg.style.zIndex = "10";
+            gImg.style.opacity = "0";
+            gImg.style.transition = "opacity 1.5s ease-in-out";
 
-        ghosts.appendChild(gImg);
-        document.body.appendChild(ghosts);
+            ghosts.appendChild(gImg);
+            document.body.appendChild(ghosts);
 
-        setTimeout(() => {
-            gImg.style.opacity = "1"; // Smooth fade-in effect
-        }, i * 1200);
+            setTimeout(() => {
+                gImg.style.opacity = "1"; // Smooth fade-in effect
+            }, i * 1200);
+        }
     }
-}
 
-spaceShip.addEventListener('click', () => { 
+} spaceShip.addEventListener('click', () => { 
     alienVoice.play().catch(error => {
         console.error("Audio playback failed: ", error);
     });

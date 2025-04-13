@@ -1,10 +1,11 @@
-@media (max-width: 450px) {
+@media (hover: none),(max-width: 450px) {
   * {
     animation: none !important;
     transition: none !important;
     box-shadow: none !important;
     filter: none !important;
   }
+
 
   *::before,
   *::after {
@@ -17,5 +18,12 @@
   /* But allow blur filters to remain (if specifically used) */
   [style*="blur("] {
     filter: blur(4px) !important; /* or whatever the intended blur value is */
+  }
+
+  .banner2, #horrorBanner{
+    display: none;
+  }
+  .entry-screen{
+    display: none;
   }
 }
