@@ -1,258 +1,330 @@
 <% layout("/layouts/boilerplate") %>
 
 <div class="main-content" style="background-image: url('<%= themeUrl %>');">
-    <div class="row-5">
-            <div class="col-5 banner lazy-item">
-                <div class="video-banner">
-                    <img src="https://cdn.jsdelivr.net/gh/mishraRj/rjtv-trailers/General%20Data/RJTVGIF.gif" alt="gif">
-                </div>
-                <div class="banner-text">
-                        <div class="upgrade">
-                            <p>Unlock the multiverse. Go Pro for exclusive realms.</p>
-                        </div>
-                        <div class="upgrade-btn">
-                            <a href="/plans">
-                                <button type="button" class="rjtv-upgrade-btn">Upgrade++</button>
-                            </a>
-                        </div>
-                </div>
-            </div>
+  <div class="row-5">
+    <div class="col-5 banner lazy-item">
+      <div class="video-banner">
+        <img
+          src="https://cdn.jsdelivr.net/gh/mishraRj/rjtv-trailers/General%20Data/RJTVGIF.gif"
+          alt="gif" />
+      </div>
+      <div class="banner-text">
+        <div class="upgrade">
+          <p>Unlock the multiverse. Go Pro for exclusive realms.</p>
         </div>
-            <!-- Loader Spinner-->
-    <div class="trailer lazy-item" id="trailer-container">
-                <div id="loadingIndicator" class="loader">
-                    <div class="spinner">
-                        <div class="signal-wave wave1"></div>
-                        <div class="signal-wave wave2"></div>
-                        <div class="signal-wave wave3"></div>
-                        <img 
-                        src="https://cdn.jsdelivr.net/gh/mishraRj/rjtv-trailers/General%20Data/loader.png" 
-                        alt="">
-                    </div>
-                </div>
-                    
-                <!-- Video Player -->
-        <video id="trailerVideo" width="100%" height="auto" autoplay muted playsinline>
-            <source id="videoSource" src="" type="video/mp4">
-        </video>
-
-            <i class="fa-solid fa-volume-high" id="volumeIcon" style="display: none; cursor: pointer; z-index: 3000;"></i>
-            <i class="fa-solid fa-volume-xmark" id="muteIcon" style="cursor: pointer; z-index: 3000"></i>
-        <!-- Single Trailer Display Section -->
-        <div class="trailer-text" id="trailer-description" style="display: none;">
-            <div class="trailer-descripton">
-                <img id="trailer-image" src="" alt="Trailer Image">
-                <ul>
-                    <li id="trailer-year"></li>
-                    <li id="trailer-language"></li>
-                    <li><span class="badge text-bg-secondary" id="trailer-rating">U/A 13+</span></li>
-                </ul>
-                <br>
-                <p id="trailer-description-text"></p>
-                <p id="trailer-genre"></p>
-            </div>
-
-            <div class="text-btn">
-                <button class="btn btn-secondary watch-btn" id="Watch_Btn"  type="button">Watch now</button>
-                <div id="watchlater-form-container"></div>
-            </div>
+        <div class="upgrade-btn">
+          <a href="/plans">
+            <button type="button" class="rjtv-upgrade-btn">Upgrade++</button>
+          </a>
         </div>
-
-        <div class="next-trailer">
-            <i class="fas fa-chevron-right"></i>
-        </div>
+      </div>
     </div>
-            <br><br><br>
-            <h2>Latest Releases</h2>
-            <br>
-            <div class="container swiper lazy-item" id="container">
-                <div class="slider-wrapper" id="slider-wrapper">
-                    <div class="card-list swiper-wrapper" id="card-list">
-                        <% for(let movies of latestReleases) { %>
-                            <div class="card-item swiper-slide" id="card-item">
-                                <a href="/home_page/<%= movies._id %>-<%= movies.title %>">
-                                    <img src="<%= movies.image.url %>" alt="img" class="user-image" id="user-image" id="user-image">
-                                </a>
-                            </div>
-                        <% } %>
-                    </div>
+  </div>
+  <!-- Loader Spinner-->
+  <div class="trailer lazy-item" id="trailer-container">
+    <div id="loadingIndicator" class="loader">
+      <div class="spinner">
+        <div class="signal-wave wave1"></div>
+        <div class="signal-wave wave2"></div>
+        <div class="signal-wave wave3"></div>
+        <img
+          src="https://cdn.jsdelivr.net/gh/mishraRj/rjtv-trailers/General%20Data/loader.png"
+          alt="" />
+      </div>
+    </div>
 
-                <!-- If we need navigation buttons -->
-                <div class="swiper-slide-button swiper-button-prev"></div>
-                <div class="swiper-slide-button swiper-button-next"></div>
-                </div>
-            </div>
+    <!-- Video Player -->
+    <div class="video-container">
+      <video
+        id="trailerVideo"
+        width="100%"
+        height="auto"
+        autoplay
+        muted
+        playsinline>
+        <source
+          id="videoSource"
+          src=""
+          type="video/mp4"
+          style="width: 100%; height: auto" />
+      </video>
+    </div>
 
-            <h2>Coming soon...</h2>
-            <br>
-            <div class="container swiper lazy-item" id="container">
-                <div class="slider-wrapper" id="slider-wrapper">
-                    <div class="card-list swiper-wrapper" id="card-list">
-                        <% for(let movies of comingSoon) { %>
-                            <div class="card-item swiper-slide" id="card-item">
-                                <a href="/home_page/<%= movies._id %>-<%= movies.title %>">
-                                    <img src="<%= movies.image.url %>" alt="img" class="user-image" id="user-image">
-                                </a>
-                            </div>
-                        <% } %>
-                    </div>
+    <i
+      class="fa-solid fa-volume-high"
+      id="volumeIcon"
+      style="display: none; cursor: pointer; z-index: 3000;"></i>
+    <i
+      class="fa-solid fa-volume-xmark"
+      id="muteIcon"
+      style="cursor: pointer; z-index: 3000"></i>
+    <!-- Single Trailer Display Section -->
+    <div class="trailer-text" id="trailer-description" style="display: none;">
+      <div class="trailer-descripton">
+        <img id="trailer-image" src="" alt="Trailer Image" />
+        <ul>
+          <li id="trailer-year"></li>
+          <li id="trailer-language"></li>
+          <li>
+            <span class="badge text-bg-secondary" id="trailer-rating"
+              >U/A 13+</span
+            >
+          </li>
+        </ul>
+        <br />
+        <p id="trailer-description-text"></p>
+        <p id="trailer-genre"></p>
+      </div>
 
-                <!-- If we need navigation buttons -->
-                <div class="swiper-slide-button swiper-button-prev"></div>
-                <div class="swiper-slide-button swiper-button-next"></div>
-                </div>
-            </div>
+      <div class="text-btn">
+        <button
+          class="btn btn-secondary watch-btn"
+          id="Watch_Btn"
+          type="button">
+          Watch now
+        </button>
+        <div id="watchlater-form-container"></div>
+      </div>
+    </div>
 
-            <h2>Terrifying Thrillers</h2>
-            <a href="/horror_Movies"><h5 class="horror_btn">&#128128;...view all...&#128128;</h5></a>
-            <br>
-            <div class="container swiper lazy-item" id="container">
-                <div class="slider-wrapper" id="slider-wrapper">
-                    <div class="card-list swiper-wrapper" id="card-list">
-                        <% for(let movies of terrifyingThriller) { %>
-                            <div class="card-item swiper-slide" id="card-item">
-                                <a href="/home_page/<%= movies._id %>-<%= movies.title %>">
-                                    <img src="<%= movies.image.url %>" alt="img" class="user-image" id="user-image">
-                                </a>
-                            </div>
-                        <% } %>
-                    </div>
-
-                <!-- If we need navigation buttons -->
-                <div class="swiper-slide-button swiper-button-prev"></div>
-                <div class="swiper-slide-button swiper-button-next"></div>
-                </div>
-            </div>
-            
-            <h2>Marvel Cinematic Universe</h2>
-            <a href="/categories/<%= marvelPlanet._id %>-<%= marvelPlanet.channelId %>"><h5>...view all...</h5></a>
-            <br>
-            <div class="container swiper lazy-item" id="container">
-                <div class="slider-wrapper" id="slider-wrapper">
-                    <div class="card-list swiper-wrapper" id="card-list">
-                        <% for(let movies of MCUmovies) { %>
-                            <div class="card-item swiper-slide" id="card-item">
-                                <a href="/home_page/<%= movies._id %>-<%= movies.title %>">
-                                    <img src="<%= movies.image.url %>" alt="img" class="user-image" id="user-image">
-                                </a>
-                            </div>
-                        <% } %>
-                    </div>
-
-                <!-- If we need navigation buttons -->
-                <div class="swiper-slide-button swiper-button-prev"></div>
-                <div class="swiper-slide-button swiper-button-next"></div>
-                </div>
-            </div>
-
-            <h2>Popular Animes</h2>
-            <a href="/categories/<%= animePlanet._id %>-<%= animePlanet.channelId %>"><h5>...view all...</h5></a>
-            <br>
-            <div class="container swiper lazy-item" id="container">
-                <div class="slider-wrapper" id="slider-wrapper">
-                    <div class="card-list swiper-wrapper" id="card-list">
-                        <% for(let movies of animes) { %>
-                            <div class="card-item swiper-slide" id="card-item">
-                                <a href="/home_page/<%= movies._id %>-<%= movies.title %>">
-                                    <img src="<%= movies.image.url %>" alt="img" class="user-image" id="user-image">
-                                </a>
-                            </div>
-                        <% } %>
-                    </div>
-
-                <!-- If we need navigation buttons -->
-                <div class="swiper-slide-button swiper-button-prev"></div>
-                <div class="swiper-slide-button swiper-button-next"></div>
-                </div>
-            </div>
-
-            <h2>Best of Indian Mythologies</h2>
-            <a href="/categories/<%= rjtvShows._id %>-<%= rjtvShows.channelId %>"><h5>...view all...</h5></a>
-            <br>
-            <div class="container swiper lazy-item" id="container">
-                <div class="slider-wrapper" id="slider-wrapper">
-                    <div class="card-list swiper-wrapper" id="card-list">
-                        <% for(let movies of dramas) { %>
-                            <div class="card-item swiper-slide" id="card-item">
-                                <a href="/home_page/<%= movies._id %>-<%= movies.title %>">
-                                    <img src="<%= movies.image.url %>" alt="img" class="user-image" id="user-image">
-                                </a>
-                            </div>
-                        <% } %>
-                    </div>
-
-                <!-- If we need navigation buttons -->
-                <div class="swiper-slide-button swiper-button-prev"></div>
-                <div class="swiper-slide-button swiper-button-next"></div>
-                </div>
-            </div>
-
-            <h2>Nostalgic Animated Shows</h2>
-            <a href="/categories/<%= cartoonsPlanet._id %>-<%= cartoonsPlanet.channelId %>"><h5>...view all...</h5></a>
-            <br>
-            <div class="container swiper lazy-item" id="container">
-                <div class="slider-wrapper" id="slider-wrapper">
-                    <div class="card-list swiper-wrapper" id="card-list">
-                        <% for(let movies of cartoonShows) { %>
-                            <div class="card-item swiper-slide" id="card-item">
-                                <a href="/home_page/<%= movies._id %>-<%= movies.title %>">
-                                    <img src="<%= movies.image.url %>" alt="img" class="user-image" id="user-image">
-                                </a>
-                            </div>
-                        <% } %>
-                    </div>
-
-                <!-- If we need navigation buttons -->
-                <div class="swiper-slide-button swiper-button-prev"></div>
-                <div class="swiper-slide-button swiper-button-next"></div>
-                </div>
-            </div>
-
-            <h2>Animation Movies</h2>
-            <a href="/categories/<%= cartoonsPlanet._id %>-<%= cartoonsPlanet.channelId %>"><h5>...view all...</h5></a>
-            <br>
-            <div class="container swiper lazy-item" id="container">
-                <div class="slider-wrapper" id="slider-wrapper">
-                    <div class="card-list swiper-wrapper" id="card-list">
-                        <% for(let movies of cartoonMovies) { %>
-                            <div class="card-item swiper-slide" id="card-item">
-                                <a href="/home_page/<%= movies._id %>-<%= movies.title %>">
-                                    <img src="<%= movies.image.url %>" alt="img" class="user-image" id="user-image">
-                                </a>
-                            </div>
-                        <% } %>
-                    </div>
-
-                <!-- If we need navigation buttons -->
-                <div class="swiper-slide-button swiper-button-prev"></div>
-                <div class="swiper-slide-button swiper-button-next"></div>
-                </div>
-            </div>
+    <div class="next-trailer">
+      <i class="fas fa-chevron-right"></i>
+    </div>
+  </div>
+  <br /><br /><br />
+  <h2>Latest Releases</h2>
+  <br />
+  <div class="container swiper lazy-item" id="container">
+    <div class="slider-wrapper" id="slider-wrapper">
+      <div class="card-list swiper-wrapper" id="card-list">
+        <% for(let movies of latestReleases) { %>
+        <div class="card-item swiper-slide" id="card-item">
+          <a href="/home_page/<%= movies._id %>-<%= movies.title %>">
+            <img
+              src="<%= movies.image.url %>"
+              alt="img"
+              class="user-image"
+              id="user-image"
+              id="user-image" />
+          </a>
         </div>
+        <% } %>
+      </div>
+
+      <!-- If we need navigation buttons -->
+      <div class="swiper-slide-button swiper-button-prev"></div>
+      <div class="swiper-slide-button swiper-button-next"></div>
+    </div>
+  </div>
+
+  <h2>Coming soon...</h2>
+  <br />
+  <div class="container swiper lazy-item" id="container">
+    <div class="slider-wrapper" id="slider-wrapper">
+      <div class="card-list swiper-wrapper" id="card-list">
+        <% for(let movies of comingSoon) { %>
+        <div class="card-item swiper-slide" id="card-item">
+          <a href="/home_page/<%= movies._id %>-<%= movies.title %>">
+            <img
+              src="<%= movies.image.url %>"
+              alt="img"
+              class="user-image"
+              id="user-image" />
+          </a>
+        </div>
+        <% } %>
+      </div>
+
+      <!-- If we need navigation buttons -->
+      <div class="swiper-slide-button swiper-button-prev"></div>
+      <div class="swiper-slide-button swiper-button-next"></div>
+    </div>
+  </div>
+
+  <h2>Terrifying Thrillers</h2>
+  <a href="/horror_Movies"
+    ><h5 class="horror_btn">&#128128;...view all...&#128128;</h5></a
+  >
+  <br />
+  <div class="container swiper lazy-item" id="container">
+    <div class="slider-wrapper" id="slider-wrapper">
+      <div class="card-list swiper-wrapper" id="card-list">
+        <% for(let movies of terrifyingThriller) { %>
+        <div class="card-item swiper-slide" id="card-item">
+          <a href="/home_page/<%= movies._id %>-<%= movies.title %>">
+            <img
+              src="<%= movies.image.url %>"
+              alt="img"
+              class="user-image"
+              id="user-image" />
+          </a>
+        </div>
+        <% } %>
+      </div>
+
+      <!-- If we need navigation buttons -->
+      <div class="swiper-slide-button swiper-button-prev"></div>
+      <div class="swiper-slide-button swiper-button-next"></div>
+    </div>
+  </div>
+
+  <h2>Marvel Cinematic Universe</h2>
+  <a href="/categories/<%= marvelPlanet._id %>-<%= marvelPlanet.channelId %>"
+    ><h5>...view all...</h5></a
+  >
+  <br />
+  <div class="container swiper lazy-item" id="container">
+    <div class="slider-wrapper" id="slider-wrapper">
+      <div class="card-list swiper-wrapper" id="card-list">
+        <% for(let movies of MCUmovies) { %>
+        <div class="card-item swiper-slide" id="card-item">
+          <a href="/home_page/<%= movies._id %>-<%= movies.title %>">
+            <img
+              src="<%= movies.image.url %>"
+              alt="img"
+              class="user-image"
+              id="user-image" />
+          </a>
+        </div>
+        <% } %>
+      </div>
+
+      <!-- If we need navigation buttons -->
+      <div class="swiper-slide-button swiper-button-prev"></div>
+      <div class="swiper-slide-button swiper-button-next"></div>
+    </div>
+  </div>
+
+  <h2>Popular Animes</h2>
+  <a href="/categories/<%= animePlanet._id %>-<%= animePlanet.channelId %>"
+    ><h5>...view all...</h5></a
+  >
+  <br />
+  <div class="container swiper lazy-item" id="container">
+    <div class="slider-wrapper" id="slider-wrapper">
+      <div class="card-list swiper-wrapper" id="card-list">
+        <% for(let movies of animes) { %>
+        <div class="card-item swiper-slide" id="card-item">
+          <a href="/home_page/<%= movies._id %>-<%= movies.title %>">
+            <img
+              src="<%= movies.image.url %>"
+              alt="img"
+              class="user-image"
+              id="user-image" />
+          </a>
+        </div>
+        <% } %>
+      </div>
+
+      <!-- If we need navigation buttons -->
+      <div class="swiper-slide-button swiper-button-prev"></div>
+      <div class="swiper-slide-button swiper-button-next"></div>
+    </div>
+  </div>
+
+  <h2>Best of Indian Mythologies</h2>
+  <a href="/categories/<%= rjtvShows._id %>-<%= rjtvShows.channelId %>"
+    ><h5>...view all...</h5></a
+  >
+  <br />
+  <div class="container swiper lazy-item" id="container">
+    <div class="slider-wrapper" id="slider-wrapper">
+      <div class="card-list swiper-wrapper" id="card-list">
+        <% for(let movies of dramas) { %>
+        <div class="card-item swiper-slide" id="card-item">
+          <a href="/home_page/<%= movies._id %>-<%= movies.title %>">
+            <img
+              src="<%= movies.image.url %>"
+              alt="img"
+              class="user-image"
+              id="user-image" />
+          </a>
+        </div>
+        <% } %>
+      </div>
+
+      <!-- If we need navigation buttons -->
+      <div class="swiper-slide-button swiper-button-prev"></div>
+      <div class="swiper-slide-button swiper-button-next"></div>
+    </div>
+  </div>
+
+  <h2>Nostalgic Animated Shows</h2>
+  <a
+    href="/categories/<%= cartoonsPlanet._id %>-<%= cartoonsPlanet.channelId %>"
+    ><h5>...view all...</h5></a
+  >
+  <br />
+  <div class="container swiper lazy-item" id="container">
+    <div class="slider-wrapper" id="slider-wrapper">
+      <div class="card-list swiper-wrapper" id="card-list">
+        <% for(let movies of cartoonShows) { %>
+        <div class="card-item swiper-slide" id="card-item">
+          <a href="/home_page/<%= movies._id %>-<%= movies.title %>">
+            <img
+              src="<%= movies.image.url %>"
+              alt="img"
+              class="user-image"
+              id="user-image" />
+          </a>
+        </div>
+        <% } %>
+      </div>
+
+      <!-- If we need navigation buttons -->
+      <div class="swiper-slide-button swiper-button-prev"></div>
+      <div class="swiper-slide-button swiper-button-next"></div>
+    </div>
+  </div>
+
+  <h2>Animation Movies</h2>
+  <a
+    href="/categories/<%= cartoonsPlanet._id %>-<%= cartoonsPlanet.channelId %>"
+    ><h5>...view all...</h5></a
+  >
+  <br />
+  <div class="container swiper lazy-item" id="container">
+    <div class="slider-wrapper" id="slider-wrapper">
+      <div class="card-list swiper-wrapper" id="card-list">
+        <% for(let movies of cartoonMovies) { %>
+        <div class="card-item swiper-slide" id="card-item">
+          <a href="/home_page/<%= movies._id %>-<%= movies.title %>">
+            <img
+              src="<%= movies.image.url %>"
+              alt="img"
+              class="user-image"
+              id="user-image" />
+          </a>
+        </div>
+        <% } %>
+      </div>
+
+      <!-- If we need navigation buttons -->
+      <div class="swiper-slide-button swiper-button-prev"></div>
+      <div class="swiper-slide-button swiper-button-next"></div>
+    </div>
+  </div>
+</div>
 
 <script>
-    const isLoggedIn = <%= isLoggedIn ? 'true' : 'false' %>;
-    const currUserWatchLater = <%- JSON.stringify(currUser ? currUser.watchLater : []) %>;
+  const isLoggedIn = <%= isLoggedIn ? 'true' : 'false' %>;
+  const currUserWatchLater = <%- JSON.stringify(currUser ? currUser.watchLater : []) %>;
 
-    // Fetch trailers data from EJS
-    const trailers = [
-        <% randomTrailers.forEach(trailer => { %>
-            {
-                name: "<%= trailer.title %>",
-                link: "<%= trailer.randomTrailerLink %>",
-                image: "<%= trailer.randomImageLink %>",
-                year: <%= trailer.year %>,
-                language: "<%= trailer.language.join(', ') %>",
-                description: "<%= trailer.description %>",
-                genre: "<%= trailer.genre.join(' | ') %>",
-                descriptionId: "<%= trailer.descriptionId %>" ,
-                id: "<%= trailer._id %>",
-                sourceCollection: "<%= trailer.channel %>",
-            },
-        <% }); %>
-    ];
+  // Fetch trailers data from EJS
+  const trailers = [
+      <% randomTrailers.forEach(trailer => { %>
+          {
+              name: "<%= trailer.title %>",
+              link: "<%= trailer.randomTrailerLink %>",
+              image: "<%= trailer.randomImageLink %>",
+              year: <%= trailer.year %>,
+              language: "<%= trailer.language.join(', ') %>",
+              description: "<%= trailer.description %>",
+              genre: "<%= trailer.genre.join(' | ') %>",
+              descriptionId: "<%= trailer.descriptionId %>" ,
+              id: "<%= trailer._id %>",
+              sourceCollection: "<%= trailer.channel %>",
+          },
+      <% }); %>
+  ];
 </script>
-
-
-
-
