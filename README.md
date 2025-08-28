@@ -39,6 +39,27 @@ Built from scratch using **MongoDB, Express.js, Node.js, and EJS**, the project 
 - RJTV signature glow effects, animations, and neon-lit components
 
 ---
+## 📸 Screenshots
+
+### 🎬 User Dashboard & Home Page
+| Home Page | Random Trailers Player | User Dashboard |
+|------------|-------------|----------------|
+| ![Home](screenshots/homePage.png) | ![Random Trailers Player](screenshots/randomTrailerPlayer.png) | ![Dashboard](screenshots/userDashboard.png) |
+
+---
+
+### 📺 OTT Features
+| Categories Page | Movie Details | Search Page |
+|----------|---------------|------------|
+| ![Categories](screenshots/categoryPage.png) | ![Movie Details](screenshots/moviePage.png) | ![Search Page](screenshots/searchResults.png) |
+
+---
+
+### 🕹️ Extras & Settings
+| Game Zone | Alien Avatars | Horror Theme and Reviews |
+|-----------|-----------------|-------------|
+| ![Game Zone](screenshots/gamngFeature.png) | ![Alien Avatars](screenshots/alienAvatars.png) | ![Horror Theme and Reviews](screenshots/horrorAndReviews.png) |
+
 
 ## 👨‍💻 About the Developer
 
